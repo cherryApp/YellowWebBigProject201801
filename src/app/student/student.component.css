@@ -1,0 +1,12 @@
+.sort-th span {
+  display: none;
+}
+.sort-th span.show {
+  display: inline;
+}
+.sort-th {
+  cursor: pointer;
+}
+.sort-th:hover {
+  background-color: aqua;
+}
