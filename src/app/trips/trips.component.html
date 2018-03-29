@@ -1,3 +1,99 @@
-<p>
-  trips works!
-</p>
+<table class="table table-striped">
+  <thead>
+    <th>ID</th>
+    <th>Person ID</th>
+    <th>Car ID</th>
+    <th>When</th>
+    <th>Distance(km)</th>
+    <th>Act cons.(l)</th>
+    <th>PS. ID</th>
+    <th>#</th>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>{{maxID}}</td>
+      <td>
+        <select [(ngModel)]="newTrip.personId" class="custom-select">
+          <option *ngFor="let us of users" value="{{us.adat.id}}">{{us.adat.firstName+" "+us.adat.lastName}}</option>
+        </select>
+      </td>
+      <td>
+        <select [(ngModel)]="newTrip.carId" class="custom-select">
+          <option *ngFor="let car of cars" value="{{car.adat.id}}">{{car.adat.type}}</option>
+        </select>
+      </td>
+      <td>
+        <input type="date" [(ngModel)]="newTrip.date" class="form-control">
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="newTrip.distance" class="form-control">
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="newTrip.actConsumption" class="form-control">
+      </td>
+      <td>
+        <select [(ngModel)]="newTrip.pstationIds" class="custom-select">
+          <option *ngFor="let station of ps" value="{{station.adat.id}}">{{station.adat.location}}</option>
+        </select>
+      </td>
+      <td>
+        <button class="btn btn-block btn-success" (click)="save()">Save</button>
+      </td>
+    </tr>
+    <tr *ngFor="let row of data">
+      <td>{{row.adat.id}}</td>
+      <td>{{row.adat.personId}}</td>
+      <td>{{row.adat.carId}}</td>
+      <td>{{row.adat.date}}</td>
+      <td>{{row.adat.distance}}</td>
+      <td>{{row.adat.actConsumption}}</td>
+      <td>{{row.adat.pstationIds}}</td>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-primary" (click)="details(row)">Details</button>
+          <button class="btn btn-danger" (click)="deleteRow(row.key)">Delete</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="container bg-light">
+  <!-- <div class="row">
+    <div class="btn-group">
+      <button class="btn btn-primary">More about Car</button>
+      <button class="btn btn-warning">More about Petrol Station</button>
+      <button class="btn btn-success">More about Driver</button>
+    </div>
+  </div> -->
+  <div *ngIf="list" class="row">
+    <div class="col-4">
+      <ul class="list-group">
+        <li class="list-group-item active">Driver</li>
+        <li class="list-group-item">Lastname: {{more.user.firstName}}</li>
+        <li class="list-group-item">Firstname: {{more.user.lastName}}</li>
+        <li class="list-group-item">City: {{more.user.city}}</li>
+        <li class="list-group-item">Email: {{more.user.email}}</li>
+
+      </ul>
+    </div>
+    <div class="col-4">
+      <ul class="list-group">
+        <li class="list-group-item active">Car</li>
+        <li class="list-group-item">Type: {{more.car.type}}</li>
+        <li class="list-group-item">Avg Consumption: {{more.car.avgConsumption}} l/100km</li>
+        <li class="list-group-item">MotorType: {{more.car.motorType}}</li>
+
+      </ul>
+    </div>
+    <div class="col-4">
+      <ul class="list-group">
+        <li class="list-group-item active">Petrol Station</li>
+        <li class="list-group-item">Location: {{more.ps.location}}</li>
+        <li class="list-group-item">Petrol Price: {{more.ps.petrolPrice}}</li>
+        <li class="list-group-item">Diesel Price: {{more.ps.dieselPrice}}</li>
+
+      </ul>
+    </div>
+  </div>
+</div>

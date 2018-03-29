@@ -9,7 +9,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class CarsComponent implements OnInit {
 
   constructor(private db: AngularFireDatabase) {
-    this.db.object('uzemanyag').valueChanges().subscribe(value => console.log(value['cars']));
+    this.db.object('uzemanyag').valueChanges().subscribe(value => console.log(value, value['cars']));
   }
 
   ngOnInit() {
