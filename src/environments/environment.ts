@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDGP03qZuuqGrKgNNXQ2UikQDiuTlylLfg",
-    authDomain: "yellow-4516a.firebaseapp.com",
-    databaseURL: "https://yellow-4516a.firebaseio.com",
-    projectId: "yellow-4516a",
-    storageBucket: "yellow-4516a.appspot.com",
-    messagingSenderId: "216839735984"
+    apiKey: "AIzaSyBZqNd0LwgeXPUtkXs2CVpZVEUTiOhHG-4",
+    authDomain: "realestatehomepage18.firebaseapp.com",
+    databaseURL: "https://realestatehomepage18.firebaseio.com",
+    projectId: "realestatehomepage18",
+    storageBucket: "",
+    messagingSenderId: "87855384937"
   }
 };
