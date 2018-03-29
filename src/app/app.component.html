@@ -2,6 +2,23 @@
 
   <app-nav></app-nav>
 </section>
+
+<div class="container">
+    <div class="col-6 offset-3">
+      <form (ngSubmit)="login()" *ngIf="!user">
+        <div class="form-group">
+          <label for="email"></label>
+          <input class="form-control" name="email" type="text" [(ngModel)]="loginData.email" id="email">
+        </div>
+        <div class="form-group">
+          <label for="pass"></label>
+          <input class="form-control" name="pass" type="password" [(ngModel)]="loginData.pass" id="pass">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+  
+      </form>
+    </div>
+    
 <div class="container">
   <div class="row">
     <div class="col-10 offset-2">

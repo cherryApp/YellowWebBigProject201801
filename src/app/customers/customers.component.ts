@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataImportService } from '../data-import.service';
 
 @Component({
   selector: 'app-customers',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-
-  constructor() { }
+data: any
+  constructor(private iportData: DataImportService) { 
+    this.data = this.iportData.tableData;
+  }
 
   ngOnInit() {
   }

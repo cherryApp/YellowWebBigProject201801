@@ -34,3 +34,9 @@ export class RealEstate {
         status: string
     ) { }
 }
+
+export class DatabaseCl implements Iroda, Agent, LandLord, RealEstate {
+    constructor(
+    
+    ) { }
+}
