@@ -22,6 +22,7 @@ const appRoutes: Routes = [
   { component: AgentsComponent, path: 'agents' },
   { component: EstatesComponent, path: 'estates' },
   { component: CustomersComponent, path: 'customers' },
+  
 ];
 
 @NgModule({
