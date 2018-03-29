@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { StudentComponent } from './student/student.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentComponent
+    StudentComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

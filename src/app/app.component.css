@@ -1,0 +1,7 @@
+section.nav-black {
+    background-color: black;
+   
+}
+section.nav-black>h1 {
+    color: white;
+}
