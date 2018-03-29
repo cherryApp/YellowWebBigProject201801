@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
@@ -6,8 +6,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+  user: any;
   loginData: { email: string, pass: string } = {
     email: "",
     pass: ""
@@ -19,6 +19,12 @@ export class AppComponent {
       this.loginData.pass
     ).then(
       value => console.log(value),
+      error => console.error(error)
+    );
+  }
+  ngOnInit() {
+    this.afAuth.authState.subscribe(
+      user => this.user = user,
       error => console.error(error)
     );
   }
