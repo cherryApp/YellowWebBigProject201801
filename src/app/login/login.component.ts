@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
   loginData: {email: string, pass: string} = {
     email: "",
     pass: ""
-  }
+  };
+  user: any;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -21,6 +22,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.afAuth.authState.subscribe(
+      user => this.user = user,
+      error => console.error(error)
+    );
   }
 
   login(): void {
@@ -31,6 +36,10 @@ export class LoginComponent implements OnInit {
       value => console.log(value),
       error => console.error(error)
     );
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 
 }

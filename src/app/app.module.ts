@@ -26,6 +26,8 @@ import { LoginComponent } from './login/login.component';
     AngularFireAuth,
     AngularFireDatabase
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
