@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   providers: []
 })
 export class ProductsComponent implements OnInit {
-  loginData: {email: string, pass: string} = {
+  loginData: { email: string, pass: string } = {
     email: "",
     pass: ""
   };
@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit {
     "price",
     "stock"
   ];
+
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
@@ -39,16 +40,12 @@ export class ProductsComponent implements OnInit {
       this.sorts[k] = {};
     }
 
-    // The itemRef: point to student object in the database.
-    this.itemRef = db.object('product');
+    this.itemRef = db.object('products');
 
-    // Watch changes of student object.
     this.itemRef.valueChanges().subscribe(
       values => {
-        // If new data arrives, wipe tableData array.
         this.tableData = [];
 
-        // Push new rows to the tableData with key and value.
         for (var k in values) {
           this.tableData.push({
             key: k,
@@ -58,6 +55,7 @@ export class ProductsComponent implements OnInit {
       }
     )
   }
+
 
   ngOnInit() {
     this.afAuth.authState.subscribe(
@@ -78,7 +76,7 @@ export class ProductsComponent implements OnInit {
     this.sorts[key] = this.order == -1 ? 'up' : 'down';
 
     this.lastKey = key;
-    this.tableData.sort( (a, b) => {
+    this.tableData.sort((a, b) => {
       return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
     });
   }
@@ -104,7 +102,7 @@ export class ProductsComponent implements OnInit {
   dataUpdate(row): void {
     // Rámutatok a távoli adatbázisban az adott kulcsú student-re.
     // Erre hívom meg az update metódust, aminek átadom az új adatokat.
-    this.db.object('product/'+row.key).update(row.data);
+    this.db.object('products/' + row.key).update(row.data);
   }
 
   /**
@@ -113,7 +111,7 @@ export class ProductsComponent implements OnInit {
   dataDelete(key: string): void {
     // Rámutatok a távoli adatbázisban az adott kulcsú student-re.
     // Erre hívom meg a remove metódust.
-    this.db.object('product/'+key).remove();
+    this.db.object('products/' + key).remove();
   }
 
   /**
@@ -123,7 +121,7 @@ export class ProductsComponent implements OnInit {
   dataAdd(record: any) {
     // A studnet listát lekérem és bele-pusholom az új rekordot.
     // Ha sikeres választ kaptam a szerverről, kiürítéem az új rekordok objektumát.
-    this.db.list('product').push(record).then(
+    this.db.list('products').push(record).then(
       r => this.newRow = {}
     );
   }

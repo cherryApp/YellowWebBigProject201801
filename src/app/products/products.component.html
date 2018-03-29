@@ -31,15 +31,15 @@
       <tbody>
         <tr>
           <td *ngFor="let key of keys">
-            <input class="form-control addNew" type="text" [(ngModel)]="newProduct[key]">
+            <input class="form-control addNew" type="text" [(ngModel)]="newRow[key]">
           </td>
           <td>
-            <button (click)="addProduct(newProduct)"class="btn btn-success col-12">Add New</button>
+            <button (click)="dataAdd(newRow)"class="btn btn-success col-12">Add New</button>
           </td>
         </tr>
         <tr *ngFor="let row of tableData">
           <td *ngFor="let key of keys">
-            <input [(ngModel)]="row[key]" class="form-control tableinput" type="text">
+            <input [(ngModel)]="row.data[key]" class="form-control tableinput" type="text">
           </td>
           <td>
             <div class="btn-group">
