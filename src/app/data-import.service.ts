@@ -8,27 +8,24 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class DataImportService {
   itemRef: AngularFireObject<any>;
-  irodaRef: AngularFireObject<any>;
 
-  item: Observable<any>;
   tableData: Array<any> = [];
-  databaseObject: DatabaseCl = {};
- 
-  keys: Array<string> = [
-    "irodaId",
-    "city"
-  ];
 
- 
-  currentData: any;
+  keysOffice: Array<string> = [
+    "irodaId",
+    "city"];
+
+  keysLandLord: Array<string> = [
+    "landlordId", "name", "realEstateId", "phone"];
+
+    
 
   constructor(
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
   ) {
-  
 
-    this.itemRef = db.object('Iroda');
-        this.itemRef.valueChanges().subscribe(
+    this.itemRef = db.object('landlord');
+    this.itemRef.valueChanges().subscribe(
       values => {
         this.tableData = [];
         for (var k in values) {
@@ -39,7 +36,9 @@ export class DataImportService {
         }
       }
     )
+
   }
+
 
   ngOnInit() {
   }

@@ -1,4 +1,4 @@
-export class Iroda {
+export class Office {
     constructor(
         city: string,
         irodaId: number
@@ -35,7 +35,7 @@ export class RealEstate {
     ) { }
 }
 
-export class DatabaseCl implements Iroda, Agent, LandLord, RealEstate {
+export class DatabaseCl implements Office, Agent, LandLord, RealEstate {
     constructor(
     
     ) { }
