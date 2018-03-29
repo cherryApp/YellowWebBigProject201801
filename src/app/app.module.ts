@@ -11,14 +11,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NavComponent } from './nav/nav.component';
 
-import { OfficesComponent } from './offices/offices.component';
+import { OfficeComponent } from './office/office.component';
 import { AgentsComponent } from './agents/agents.component';
 import { EstatesComponent } from './estates/estates.component';
 import { CustomersComponent } from './customers/customers.component';
 
 const appRoutes: Routes = [
-  { path: '', component: OfficesComponent, pathMatch: 'full' },
-  { component: OfficesComponent, path: 'offices' },
+  { path: '', component: OfficeComponent, pathMatch: 'full' },
+  { component: OfficeComponent, path: 'offices' },
   { component: AgentsComponent, path: 'agents' },
   { component: EstatesComponent, path: 'estates' },
   { component: CustomersComponent, path: 'customers' },
@@ -32,7 +32,7 @@ const appRoutes: Routes = [
     CustomersComponent,
     EstatesComponent,
     AgentsComponent,
-    OfficesComponent
+    OfficeComponent
   ],
   imports: [
     BrowserModule,
