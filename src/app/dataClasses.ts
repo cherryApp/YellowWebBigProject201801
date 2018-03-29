@@ -1,7 +1,7 @@
 export class Office {
     constructor(
         city: string,
-        irodaId: number
+        officeID: number
     ) { }
 }
 
@@ -37,6 +37,6 @@ export class RealEstate {
 
 export class DatabaseCl implements Office, Agent, LandLord, RealEstate {
     constructor(
-    
+
     ) { }
 }
