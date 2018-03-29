@@ -1,24 +1,4 @@
 {
-  "Iroda" : {
-    "1" : {
-      "city" : "Budapest",
-      "irodaId" : 1
-    },
-    "2" : {
-      "city" : "Szeged",
-      "irodaId" : 2
-    },
-    "3" : {
-      "city" : "Győr",
-      "irodaId" : 3
-    },
-    "-L8nhYsSr6qJUV1M6GhP" : {
-      "address" : "manyi",
-      "email" : "pityu",
-      "name" : "laci",
-      "status" : "gabi"
-    }
-  },
   "agent" : [ null, {
     "agentId" : 1,
     "agentName" : "Kiss Józsi",
@@ -32,25 +12,29 @@
     "realEstateId" : 1
   } ],
   "office" : {
-    "-L8nizfH9BEqt6UxDBh9" : {
-      "city" : "Győr",
-      "officeID" : "01"
-    },
     "-L8nj1dM-1qyLpRcpGbp" : {
       "city" : "Budapest",
-      "officeID" : "02"
+      "officeID" : "01"
     },
     "-L8nj4ZvKYelNrptQHWG" : {
       "city" : "Barcs",
-      "officeID" : "03"
+      "officeID" : "02"
     },
     "-L8nj7RI5CRCJQoxVo4t" : {
       "city" : "Szeged",
-      "officeID" : "04"
+      "officeID" : "03"
     },
     "-L8njFYB28DWkWYg_3Sq" : {
       "city" : "Sopron",
+      "officeID" : "04"
+    },
+    "-L8o1ZhHogyO0rgF9utk" : {
+      "city" : "Zalaegerszeg",
       "officeID" : "05"
+    },
+    "-L8o6n6UQrKlDQaibHLe" : {
+      "city" : "Mályiami Beach",
+      "officeID" : "06"
     }
   },
   "realEstate" : [ null, {
