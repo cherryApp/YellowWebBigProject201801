@@ -1,0 +1,95 @@
+{
+  "Iroda" : {
+    "1" : {
+      "city" : "Budapest",
+      "irodaId" : 1
+    },
+    "2" : {
+      "city" : "Szeged",
+      "irodaId" : 2
+    },
+    "3" : {
+      "city" : "Győr",
+      "irodaId" : 3
+    },
+    "-L8nhYsSr6qJUV1M6GhP" : {
+      "address" : "manyi",
+      "email" : "pityu",
+      "name" : "laci",
+      "status" : "gabi"
+    }
+  },
+  "agent" : [ null, {
+    "agentId" : 1,
+    "agentName" : "Kiss Józsi",
+    "email" : "kj@gmail.com",
+    "phone" : "+36301231234"
+  } ],
+  "landlord" : [ null, {
+    "landlordId" : 1,
+    "name" : "Erős Pista",
+    "phone" : "+362342341",
+    "realEstateId" : 1
+  } ],
+  "office" : {
+    "-L8nizfH9BEqt6UxDBh9" : {
+      "city" : "Győr",
+      "officeID" : "01"
+    },
+    "-L8nj1dM-1qyLpRcpGbp" : {
+      "city" : "Budapest",
+      "officeID" : "02"
+    },
+    "-L8nj4ZvKYelNrptQHWG" : {
+      "city" : "Barcs",
+      "officeID" : "03"
+    },
+    "-L8nj7RI5CRCJQoxVo4t" : {
+      "city" : "Szeged",
+      "officeID" : "04"
+    },
+    "-L8njFYB28DWkWYg_3Sq" : {
+      "city" : "Sopron",
+      "officeID" : "05"
+    }
+  },
+  "realEstate" : [ null, {
+    "address" : "Bp, Haller 3. 4/45.",
+    "agentId" : 1,
+    "area" : 54,
+    "id" : 1,
+    "margin" : 5,
+    "price" : 54000000,
+    "status" : "active"
+  } ],
+  "student" : {
+    "2" : {
+      "address" : "Pécs",
+      "email" : "k@gmail.com",
+      "name" : "Kinga1",
+      "status" : "active"
+    },
+    "-L8lhtpHpOHlfKVMEWkI" : {
+      "address" : "d",
+      "email" : "a@gmail.com",
+      "name" : "Peti",
+      "status" : "active"
+    },
+    "-L8mWMWJrclEIwYsQs6t" : {
+      "address" : "mc",
+      "email" : "l@g.hu",
+      "name" : "landlord1",
+      "status" : "subway"
+    },
+    "-L8mWeHxZMRHO7AZLtPW" : {
+      "address" : "választ",
+      "email" : "ide",
+      "name" : "valaki még dolgozik rajta?",
+      "status" : "kérem a "
+    },
+    "-L8ngb5lTxJSSCkUkX48" : {
+      "name" : "from office",
+      "status" : "to student"
+    }
+  }
+}
