@@ -12,5 +12,13 @@ export const environment = {
     projectId: "yellow-4516a",
     storageBucket: "yellow-4516a.appspot.com",
     messagingSenderId: "216839735984"
+    /*
+    apiKey: "AIzaSyDgtQLVcUR8IguEenebAdmT2qO5aCwtIGM",
+    authDomain: "masodiksor-94439.firebaseapp.com",
+    databaseURL: "https://masodiksor-94439.firebaseio.com",
+    projectId: "masodiksor-94439",
+    storageBucket: "masodiksor-94439.appspot.com",
+    messagingSenderId: "155869647166"
+    */
   }
 };
