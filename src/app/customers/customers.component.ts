@@ -8,8 +8,8 @@ import { DataImportService } from '../data-import.service';
 })
 export class CustomersComponent implements OnInit {
 data: any
-  constructor(private iportData: DataImportService) { 
-    this.data = this.iportData.tableData;
+  constructor(private importData: DataImportService) { 
+    this.data = this.importData.landlordData;
   }
 
   ngOnInit() {

@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AngularFireObject, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { Iroda, DatabaseCl } from './dataClasses';
+import { Office, DatabaseCl } from './dataClasses';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Injectable()
 export class DataImportService {
-  itemRef: AngularFireObject<any>;
+  officeRef: AngularFireObject<any>;
+  officeData: Array<any> = [];
 
-  tableData: Array<any> = [];
+  agentRef: AngularFireObject<any>;
+  agentData: Array<any> = [];
 
-  keysOffice: Array<string> = [
-    "irodaId",
-    "city"];
+  landlordRef: AngularFireObject<any>;
+  landlordData: Array<any> = [];
 
-  keysLandLord: Array<string> = [
-    "landlordId", "name", "realEstateId", "phone"];
+  estateRef: AngularFireObject<any>;
+  estateData: Array<any> = [];
 
     
 
@@ -24,12 +25,55 @@ export class DataImportService {
     private db: AngularFireDatabase,
   ) {
 
-    this.itemRef = db.object('landlord');
-    this.itemRef.valueChanges().subscribe(
+    this.officeRef = db.object('office');
+    this.officeRef.valueChanges().subscribe(
       values => {
-        this.tableData = [];
+        this.officeData = [];
         for (var k in values) {
-          this.tableData.push({
+          this.officeData.push({
+            key: k,
+            data: values[k]
+          });
+        }
+      }
+    )
+
+
+    this.landlordRef = db.object('landlord');
+    this.landlordRef.valueChanges().subscribe(
+      values => {
+        this.landlordData = [];
+        for (var k in values) {
+          this.landlordData.push({
+            key: k,
+            data: values[k]
+          });
+        }
+      }
+    )
+
+
+    this.estateRef = db.object('realEstate');
+    this.estateRef.valueChanges().subscribe(
+      values => {
+        this.estateData = [];
+        for (var k in values) {
+          this.estateData.push({
+            key: k,
+            data: values[k]
+          });
+        }
+      }
+    )
+
+
+
+    this.agentRef = db.object('agent');
+    this.agentRef.valueChanges().subscribe(
+      values => {
+        this.agentData = [];
+        for (var k in values) {
+          this.agentData.push({
             key: k,
             data: values[k]
           });
