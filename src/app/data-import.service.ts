@@ -19,7 +19,7 @@ export class DataImportService {
   estateRef: AngularFireObject<any>;
   estateData: Array<any> = [];
 
-    
+
 
   constructor(
     private db: AngularFireDatabase,
