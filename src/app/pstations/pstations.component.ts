@@ -15,7 +15,7 @@ export class PstationsComponent implements OnInit {
   item: Observable<any>; //?
   tableData: Array<any> = [];
   newRow: any = {};
-  keys: Array<string> = ['id', 'PetrolStationCompanyGroup', 'location', 'dieselPrice', 'petrolPrice'];
+  keys: Array<string> = ['Id', 'Company', 'Location', 'Diesel (HUF)', 'Petrol (HUF)'];
   petrolstationUrls: any = {
     mol: 'https://pbs.twimg.com/profile_images/378800000474004977/cf7c3082d7151bad59c596ac0def6604.png',
     omv: 'https://crunchbase-production-res.cloudinary.com/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1446785794/xzqjiv2ze4u1x23gxts7.png',

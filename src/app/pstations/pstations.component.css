@@ -1,0 +1,16 @@
+.sortKey span {
+  display: none;
+}
+
+.sortKey span.show {
+  display: inline;
+}
+
+.sortKey span {
+  cursor: pointer;
+  ;
+}
+
+.sortKey span:hover {
+  box-shadow: 5px, #000;
+}
