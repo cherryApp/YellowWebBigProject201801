@@ -16,7 +16,8 @@ export class TripsComponent implements OnInit {
     date: "",
     distance: "",
     actConsumption: "",
-    pstationIds: ""
+    pstationIds: "",
+    cost: 0
   };
   users: any;
   cars: any;
@@ -25,6 +26,9 @@ export class TripsComponent implements OnInit {
   more: any = {};
   list: boolean = false;
   car: any = "";
+  cons: any;
+  stat: any;
+  drive: any;
   constructor(private db: AngularFireDatabase) {
 
     this.db.object('uzemanyag/trips').valueChanges().subscribe(value => {
@@ -60,8 +64,30 @@ export class TripsComponent implements OnInit {
     });
   }
   save() {
-    /* this.newTrip.id = "" + this.maxID;
-    this.db.list('uzemanyag/trips').push(this.newTrip); */
+    let price = 0;
+    this.list = false;
+    this.newTrip.id = "" + this.maxID;
+    this.newTrip.carId = this.cons.split(",")[0];
+    this.newTrip.pstationIds = this.stat.split(",")[0];
+    this.newTrip.personId = this.drive.split(",")[1];
+    this.newTrip.actConsumption = (this.newTrip.distance / 100 * this.cons.split(",")[1]).toFixed(2);
+    if (this.cons.split(",")[2] == "benzin") {
+      price = this.stat.split(",")[2];
+      this.newTrip.cost = this.newTrip.actConsumption * this.stat.split(",")[2];
+    } else {
+      price = this.stat.split(",")[1];
+      this.newTrip.cost = this.newTrip.actConsumption * this.stat.split(",")[1];
+    }
+    if (this.cons.split(",")[3] - 10 > (this.newTrip.actConsumption)) {
+      this.db.object('uzemanyag/cars/' + this.cons.split(",")[4]).update({ actfuel: (parseFloat(this.cons.split(",")[3]) - parseFloat(this.newTrip.actConsumption)).toFixed(2) });
+    } else {
+      //CSAK AKKOR TANKOL HA KEVSEBB MINT 10 liter maradna és csak 10L-ig tankol
+      let dif = this.newTrip.actConsumption - (this.cons.split(",")[3] - 10);
+      this.db.object('uzemanyag/cars/' + this.cons.split(",")[4]).update({ actfuel: 10 });
+      this.db.object('uzemanyag/people/' + this.drive.split(",")[0]).update({ money: parseInt(this.drive.split(",")[2]) - price * dif });
+    }
+
+    this.db.list('uzemanyag/trips').push(this.newTrip);
     this.car = "car";
     setTimeout(() => {
       this.car = "";

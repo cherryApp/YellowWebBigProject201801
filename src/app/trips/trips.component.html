@@ -10,6 +10,7 @@
     <th>Distance(km)</th>
     <th>Act cons.(l)</th>
     <th>PS. ID</th>
+    <th>Cost</th>
     <th>#</th>
   </thead>
   <tbody [ngStyle]="{'animation-name': 'table', 'animation-duration': '2s'}">
@@ -17,13 +18,13 @@
     <tr>
       <td>{{maxID}}</td>
       <td>
-        <select [(ngModel)]="newTrip.personId" class="custom-select">
-          <option *ngFor="let us of users" value="{{us.adat.id}}">{{us.adat.firstName+" "+us.adat.lastName+" "+us.adat.money+"FT"}}</option>
+        <select [(ngModel)]="drive" class="custom-select">
+          <option *ngFor="let us of users" value="{{us.key+','+us.adat.id+','+us.adat.money}}">{{us.adat.firstName+" "+us.adat.lastName+" "+us.adat.money+"FT"}}</option>
         </select>
       </td>
       <td>
-        <select [(ngModel)]="newTrip.carId" class="custom-select">
-          <option *ngFor="let car of cars" value="{{car.adat.id}}">{{car.adat.type}}</option>
+        <select [(ngModel)]="cons" class="custom-select">
+          <option *ngFor="let car of cars" value="{{car.adat.id+','+car.adat.avgConsumption+','+car.adat.motorType+','+car.adat.actfuel+','+car.key}}">{{car.adat.type}}</option>
         </select>
       </td>
       <td>
@@ -33,15 +34,22 @@
         <input type="text" [(ngModel)]="newTrip.distance" class="form-control">
       </td>
       <td>
-        <input type="text" [(ngModel)]="newTrip.actConsumption" class="form-control">
+        Consumption:
+        <span *ngIf="cons"> {{(newTrip.distance/100*cons.split(",")[1]).toFixed(2)}} l </span>
       </td>
       <td>
-        <select [(ngModel)]="newTrip.pstationIds" class="custom-select">
-          <option *ngFor="let station of ps" value="{{station.adat.id}}">{{station.adat.location}}</option>
+        <select [(ngModel)]="stat" class="custom-select">
+          <option *ngFor="let station of ps" value="{{station.adat.id+','+station.adat.dieselPrice+','+station.adat.petrolPrice}}">{{station.adat.location}}</option>
         </select>
       </td>
       <td>
-        <button class="btn btn-block btn-success" (click)="save()" [disabled]="car">Save</button>
+        <!-- <span *ngIf="cons && stat"> {{(newTrip.distance/100*cons.split(",")[1]*stat.split(",")[2]).toFixed(2)}} Ft</span> -->
+        <span *ngIf="cons && stat">
+          {{cons.split(",")[2]=="benzin"?(newTrip.distance/100*cons.split(",")[1]*stat.split(",")[2]).toFixed(2):(newTrip.distance/100*cons.split(",")[1]*stat.split(",")[1]).toFixed(2)}}
+          Ft </span>
+      </td>
+      <td>
+        <button class="btn btn-block btn-success" (click)="save()" [disabled]="car">GO</button>
       </td>
     </tr>
     <tr *ngFor="let row of data">
@@ -52,6 +60,7 @@
       <td>{{row.adat.distance}}</td>
       <td>{{row.adat.actConsumption}}</td>
       <td>{{row.adat.pstationIds}}</td>
+      <td>{{row.adat.cost}}</td>
       <td>
         <div class="btn-group">
           <button class="btn btn-primary" (click)="details(row)">Details</button>
