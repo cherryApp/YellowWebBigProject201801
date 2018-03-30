@@ -27,12 +27,12 @@
     <table class="table table-striped">
       <thead>
         <tr id="titles-of-table">
-          <th class="sort-th text-center" *ngFor="let key of keys" (click)="sort(key)">
-            <span [class.show]="sorts[key] == 'down'">
-              <i class="fas fa-sort-amount-down"></i>
+          <th class="sort-th text-center" *ngFor="let key of keys" (click)="sortingService.sortIt(key, this.tableData, this.sorts)">
+            <span class="sort-sign" [class.show]="sorts[key] == 'down'">
+              <i class="fas fa-sort-down"></i>
             </span>
-            <span [class.show]="sorts[key] == 'up'">
-              <i class="fas fa-sort-amount-up"></i>
+            <span class="sort-sign" [class.show]="sorts[key] == 'up'">
+              <i class="fas fa-sort-up"></i>
             </span>
             {{ key }}
           </th>

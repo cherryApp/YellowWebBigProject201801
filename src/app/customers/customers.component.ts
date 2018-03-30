@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { SortingService } from '../sorting.service';
 
 @Component({
   selector: 'app-customers',
@@ -35,9 +36,11 @@ export class CustomersComponent implements OnInit {
   sorts: any = {};
   order: number = 1;
   currentData: any;
+
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    public sortingService: SortingService
   ) {
     for (let k of this.keys) {
       this.sorts[k] = {};
@@ -66,29 +69,6 @@ export class CustomersComponent implements OnInit {
     );
   }
 
-  sort(key): void {
-    /**
-     * customerId must be a number to sort
-     */
-    if (key == "customerId") {
-      parseInt(key);
-    } else { }
-
-    for (var k in this.sorts) {
-      this.sorts[k] = "";
-    }
-    if (this.lastKey == key) {
-      this.order *= -1;
-    } else {
-      this.order = 1;
-    }
-    this.sorts[key] = this.order == -1 ? 'up' : 'down';
-
-    this.lastKey = key;
-    this.tableData.sort((a, b) => {
-      return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
-    });
-  }
 
   /**
    * Login with email and password to the firebase cloud.
