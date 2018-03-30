@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-trips',
@@ -23,7 +24,9 @@ export class TripsComponent implements OnInit {
   maxID: any = "0";
   more: any = {};
   list: boolean = false;
+  car: any = "";
   constructor(private db: AngularFireDatabase) {
+
     this.db.object('uzemanyag/trips').valueChanges().subscribe(value => {
       this.data = [];
       for (let i in value) {
@@ -57,11 +60,22 @@ export class TripsComponent implements OnInit {
     });
   }
   save() {
-    this.newTrip.id = "" + this.maxID;
-    this.db.list('uzemanyag/trips').push(this.newTrip);
+    /* this.newTrip.id = "" + this.maxID;
+    this.db.list('uzemanyag/trips').push(this.newTrip); */
+    this.car = "car";
+    setTimeout(() => {
+      this.car = "";
+    }, 1000);
+    /*  this.db.list('uzemanyag/cars').push({ avgConsumption: 15, type: "Alfa Romeo", motorType: "diesel", id: 1, tank: 75, actfuel: 37 }); */
+    /*  this.db.list('uzemanyag/people').push({ email: "nagygabor@gmail.com", city: "Hatvan", firstName: "Gábor", lastName: "Nagy", money: 175000, id: 1 }); */
+    /*  this.db.list('uzemanyag/pstations').push({ avgConsumption: 15, type: "Alfa Romeo", motorType: "diesel", id: 1, tank: 75, actfuel: 37 }); */
   }
   deleteRow(key) {
+    this.list = false;
     this.db.object('uzemanyag/trips/' + key).remove();
+    /* this.db.object('uzemanyag/cars/-L8pgpd0CJw8zciue3bT').remove(); */
+    /*  this.db.object('uzemanyag/people/-L8pmXzbYcaLh7e1ton5').remove(); */
+    /* this.db.object('uzemanyag/cars/-L8pgpd0CJw8zciue3bT').remove(); */
   }
   details(row) {
     this.list = true;
