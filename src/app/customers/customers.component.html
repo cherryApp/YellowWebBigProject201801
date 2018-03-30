@@ -14,13 +14,20 @@
   </div>
 </div>
 
-
+<div class="row">
+  <div class="col-12 sirenContainer">
+    <div id="copSiren">
+      <div id="blueLight"></div>
+      <div id="redLight"></div>
+    </div>
+  </div>
+</div>
 <div class="row" *ngIf="user">
   <div class="col-12">
     <table class="table table-striped">
       <thead>
-        <tr>
-          <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
+        <tr id="titles-of-table">
+          <th class="sort-th text-center" *ngFor="let key of keys" (click)="sort(key)">
             <span [class.show]="sorts[key] == 'down'">
               <i class="fas fa-sort-amount-down"></i>
             </span>

@@ -124,7 +124,6 @@ export class CustomersComponent implements OnInit {
    * @param record - az új adatokat tartalmazó objektum.
    */
   dataAdd(record: any) {
-    console.log(record);
     this.db.list('customers').push(record).then(
       r => this.newRow = {}
     );
@@ -134,10 +133,10 @@ export class CustomersComponent implements OnInit {
    */
   randomAdd() {
     this.randomRow = {
-      "customerId": `00${Math.floor((Math.random() * 1000) + 1)}`,
-      "customerName": `${this.randomFirstNames[Math.floor((Math.random() * 30) + 1)]} ${this.randomLastNames[Math.floor((Math.random() * 30) + 1)]}`,
+      "customerId": `${Math.floor((Math.random() * 10000) + 1)}`,
+      "customerName": `${this.randomFirstNames[Math.floor((Math.random() * this.randomFirstNames.length) + 1)]} ${this.randomLastNames[Math.floor((Math.random() * this.randomLastNames.length) + 1)]}`,
       "age": `${Math.floor((Math.random() * 100) + 1)}`,
-      "address": `${this.randomCityNames[Math.floor((Math.random() * 30) + 1)]}`
+      "address": `${this.randomCityNames[Math.floor((Math.random() * this.randomCityNames.length) + 1)]}`
     }
     this.dataAdd(this.randomRow);
   }
