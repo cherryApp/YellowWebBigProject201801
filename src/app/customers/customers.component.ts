@@ -28,8 +28,8 @@ export class CustomersComponent implements OnInit {
     "address"
   ];
   randomCityNames: Array<string> = ["Aldwall", "Crystalston", "Fallhill", "Coldholt", "Marshton", "Roseness", "Marbleham", "Starrybridge", "Greenspring", "Wellspring", "Hedgebourne", "Fairdragon", "Northnesse", "Spellborough", "Silversage", "Lorwald", "Icesage", "Icemarble", "Oldgold", "Blueviolet", "Fayhaven", "Starryhall", "Wellness", "Stonespell", "Shadowwyvern", "Flowerdell", "Merribush", "Fogmere", "Riverhedge", "Roseby", "Grasskeep",];
-  randomFirstNames: Array<string> = ["Sophey", "Eberto", "Marcela", "Penny", "Karita", "Artair", "Hyacinthie", "Lucais", "Sherill", "Merrill", "Crissy", "Red", "Sidoney", "Trefor", "Carey", "Nobe", "Isahella", "Pacorro", "Debee", "Hastie", "Willetta", "Hanan", "Dinny", "Edd", "Jeannette", "Rufe", "Stephine", "Jaime", "Sibylle", "Horatio", "Tybie"];
-  randomLastNames: Array<string> = ["Swartz", "Holmberg", "Bedard", "Zane", "Moravcsik", "Koutrakis", "Haykov", "Russ", "Picasso", "Dambry", "Lacerda", "Nasca", "Monzac", "Akiba", "Wentworth", "Alix", "Howells", "Priest", "Chang", "Field-daly", "Dininny", "Kirscht", "Taborsky", "Fung", "Oliva", "Deland", "Barcus", "Vanheeckeren", "Dorfman", "Genetti", "Birnbaum"]
+  randomFirstNames: Array<string> = ["Sophey", "Eberto", "Marcela", "Penny", "Karita", "Artair", "Hyacinthie", "Lucais", "Sherill", "Merrill", "Crissy", "Red", "Sidoney", "Trefor", "Linda", "Doni", "Frédi", "Peti", "Carey", "Nobe", "Isahella", "Pacorro", "Debee", "Hastie", "Willetta", "Hanan", "Dinny", "Edd", "Jeannette", "Rufe", "Stephine", "Jaime", "Sibylle", "Horatio", "Tybie"];
+  randomLastNames: Array<string> = ["Swartz", "Holmberg", "Bedard", "Zane", "Moravcsik", "Koutrakis", "Haykov", "Russ", "Picasso", "Dambry", "Lacerda", "Nasca", "Monzac", "Akiba", "Dubéczi", "Pataki", "Kovács", "Bánfi", "Wentworth", "Alix", "Howells", "Priest", "Chang", "Field-daly", "Dininny", "Kirscht", "Taborsky", "Fung", "Oliva", "Deland", "Barcus", "Vanheeckeren", "Dorfman", "Genetti", "Birnbaum"]
 
   lastKey: string = "";
   sorts: any = {};
@@ -134,9 +134,9 @@ export class CustomersComponent implements OnInit {
   randomAdd() {
     this.randomRow = {
       "customerId": `${Math.floor((Math.random() * 10000) + 1)}`,
-      "customerName": `${this.randomFirstNames[Math.floor((Math.random() * this.randomFirstNames.length) + 1)]} ${this.randomLastNames[Math.floor((Math.random() * this.randomLastNames.length) + 1)]}`,
+      "customerName": `${this.randomFirstNames[Math.floor((Math.random() * this.randomFirstNames.length - 1) + 1)]} ${this.randomLastNames[Math.floor((Math.random() * this.randomLastNames.length - 1) + 1)]}`,
       "age": `${Math.floor((Math.random() * 100) + 1)}`,
-      "address": `${this.randomCityNames[Math.floor((Math.random() * this.randomCityNames.length) + 1)]}`
+      "address": `${this.randomCityNames[Math.floor((Math.random() * this.randomCityNames.length - 1) + 1)]}`
     }
     this.dataAdd(this.randomRow);
   }

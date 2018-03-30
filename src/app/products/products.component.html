@@ -1,18 +1,18 @@
 <div class="row">
-    <div class="col-12 col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
-      <form (ngSubmit)="login()" *ngIf="!user">
-        <div class="form-group text-left">
-          <label for="email">Email</label>
-          <input [(ngModel)]="loginData.email" class="form-control" type="text" name="email" id="email">
-        </div>
-        <div class="form-group text-left">
-          <label for="pass">Password</label>
-          <input [(ngModel)]="loginData.pass" class="form-control" type="password" name="pass" id="pass">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
-      </form>
-    </div>
+  <div class="col-12 col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
+    <form (ngSubmit)="login()" *ngIf="!user">
+      <div class="form-group text-left">
+        <label for="email">Email</label>
+        <input [(ngModel)]="loginData.email" class="form-control" type="text" name="email" id="email">
+      </div>
+      <div class="form-group text-left">
+        <label for="pass">Password</label>
+        <input [(ngModel)]="loginData.pass" class="form-control" type="password" name="pass" id="pass">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+    </form>
   </div>
+</div>
 
 
 <div class="row" *ngIf="user">
@@ -21,8 +21,12 @@
       <thead>
         <tr>
           <th class="sort-th" *ngFor="let key of keys" (click)="sortingService.sortIt(key, this.tableData, this.sorts)">
-            <span class="sort-sign"  [class.show]="sorts[key] == 'down'"><i class="fas fa-sort-down"></i></span>
-            <span class="sort-sign" [class.show]="sorts[key] == 'up'"><i class="fas fa-sort-up"></i></span>
+            <span class="sort-sign" [class.show]="sorts[key] == 'down'">
+              <i class="fas fa-sort-down"></i>
+            </span>
+            <span class="sort-sign" [class.show]="sorts[key] == 'up'">
+              <i class="fas fa-sort-up"></i>
+            </span>
             {{ key }}
           </th>
           <th></th>
@@ -34,7 +38,10 @@
             <input class="form-control addNew" type="text" [(ngModel)]="newRow[key]">
           </td>
           <td>
-            <button (click)="dataAdd(newRow)"class="btn btn-success col-12">Add New</button>
+            <div class="btn-group">
+              <button (click)="dataAdd(newRow)" class="btn btn-success col-6">Add New</button>
+              <button (click)="randomAdd()" class="btn btn-dark col-6">Random</button>
+            </div>
           </td>
         </tr>
         <tr *ngFor="let row of tableData">
@@ -43,9 +50,9 @@
           </td>
           <td>
             <div class="btn-group">
-            <button (click)="dataUpdate(row)" class="btn btn-primary col-6">Update</button>
-            <button (click)="dataDelete(row.key)" class="btn btn-danger col-6">Delete</button>
-          </div>
+              <button (click)="dataUpdate(row)" class="btn btn-primary col-6">Update</button>
+              <button (click)="dataDelete(row.key)" class="btn btn-danger col-6">Delete</button>
+            </div>
           </td>
         </tr>
       </tbody>

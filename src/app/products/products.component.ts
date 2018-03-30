@@ -28,6 +28,10 @@ export class ProductsComponent implements OnInit {
     "price",
     "stock"
   ];
+  randomProductNames: Array<string> = ["Fender Stratocaster", "Fender Telecaster", "Fender Jaguar", "Fender Mustang", "Jackson Dinky", "Jackson Soloist", "Jackson Warrior", "Jackson Kelly", "Jackson King V", "Gibson Les Paul", "Gibson SG", "Gibson Flying V", "Gibson Explorer", "Gibson Firebird", "Friedman Dirty Shirley", "Friedman Brown Eye", "Peavey 5150", "Peavey 6606", "Marshall JCM 800", "Marshall JCM 900", "Marshall JCM 2000", "Marshall JMP-1", "Orange Micro Terror", "Orange Dual Terror", "Orange Tiny Terror", "Blackstar Artist Series", "Blackstar Artisan Series", "Blackstar Venue Series",
+  ];
+  randomItemCode: Array<string> = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "N", "X", "Y", "Z"];
+  randomRow: any = {};
 
   sorts: any = {};
   currentData: any;
@@ -109,6 +113,20 @@ export class ProductsComponent implements OnInit {
     this.db.list('products').push(record).then(
       r => this.newRow = {}
     );
+  }
+
+  randomAdd() {
+    let generateRandomItemCode = "";
+    for (let i = 0; i < 4; i++) {
+      generateRandomItemCode += this.randomItemCode[Math.floor((Math.random() * this.randomItemCode.length - 1) + 1)];
+    }
+    this.randomRow = {
+      "productName": `${this.randomProductNames[Math.floor((Math.random() * this.randomProductNames.length - 1) + 1)]}`,
+      "itemCode": `${Math.floor((Math.random() * 10000) + 1)}${generateRandomItemCode}`,
+      "price": `${Math.floor((Math.random() * 10000) + 1)} $`,
+      "stock": `${Math.floor((Math.random() * 100) + 1)}`
+    }
+    this.dataAdd(this.randomRow);
   }
 
 }
