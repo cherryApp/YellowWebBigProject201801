@@ -14,11 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 import { Route } from '@angular/compiler/src/core';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { CustomersComponent } from './customers/customers.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent, pathMatch: 'full' },
-  { component: LoginComponent, path: 'login'},
-  { component: ProductsComponent, path: 'products'}
+  { path: '', component: LoginComponent, pathMatch: 'full' },
+  { component: LoginComponent, path: 'login' },
+  { component: ProductsComponent, path: 'products' },
+  { component: CustomersComponent, path: 'customers' }
 ];
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ const routes: Routes = [
     StudentComponent,
     LoginComponent,
     ProductsComponent,
-    NavBarComponent
+    NavBarComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
