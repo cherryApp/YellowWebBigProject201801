@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { RouterModule, Routes } from '@angular/router';
-
+import { SortingService } from './sorting.service';
 
 import { AppComponent } from './app.component';
 import { StudentComponent } from './student/student.component';
@@ -39,7 +39,8 @@ const routes: Routes = [
   ],
   providers: [
     AngularFireAuth,
-    AngularFireDatabase
+    AngularFireDatabase,
+    SortingService
   ],
   bootstrap: [
     AppComponent
