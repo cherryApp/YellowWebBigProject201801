@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-products',
@@ -77,7 +78,7 @@ export class ProductsComponent implements OnInit {
 
     this.lastKey = key;
     this.tableData.sort((a, b) => {
-      return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
+      return Number.parseFloat(a.data[key]) ? (a.data[key]-b.data[key]) * this.order : (a.data[key].toString().localeCompare(b.data[key].toString()) * this.order);
     });
   }
 

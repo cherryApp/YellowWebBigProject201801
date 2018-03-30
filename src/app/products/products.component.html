@@ -21,8 +21,8 @@
       <thead>
         <tr>
           <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
-            <span [class.show]="sorts[key] == 'down'"><i class="fas fa-sort-amount-down"></i></span>
-            <span [class.show]="sorts[key] == 'up'"><i class="fas fa-sort-amount-up"></i></span>
+            <span class="sort-sign"  [class.show]="sorts[key] == 'down'"><i class="fas fa-sort-down"></i></span>
+            <span class="sort-sign" [class.show]="sorts[key] == 'up'"><i class="fas fa-sort-up"></i></span>
             {{ key }}
           </th>
           <th></th>
