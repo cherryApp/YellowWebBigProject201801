@@ -19,7 +19,7 @@
       <td>{{maxID}}</td>
       <td>
         <select [(ngModel)]="drive" class="custom-select">
-          <option *ngFor="let us of users" value="{{us.key+','+us.adat.id+','+us.adat.money}}">{{us.adat.firstName+" "+us.adat.lastName+" "+us.adat.money+"FT"}}</option>
+          <option *ngFor="let us of users" value="{{us.key+','+us.adat.id+','+us.adat.money}}">{{us.adat.firstName+" "+us.adat.lastName+": "+us.adat.money+"FT"}}</option>
         </select>
       </td>
       <td>
@@ -39,7 +39,7 @@
       </td>
       <td>
         <select [(ngModel)]="stat" class="custom-select">
-          <option *ngFor="let station of ps" value="{{station.adat.id+','+station.adat.dieselPrice+','+station.adat.petrolPrice}}">{{station.adat.location}}</option>
+          <option *ngFor="let station of ps" value="{{station.adat.Id+','+station.adat['Diesel (HUF)']+','+station.adat['Petrol (HUF)']}}">{{station.adat.Company}} - {{station.adat.Location}}</option>
         </select>
       </td>
       <td>
@@ -52,7 +52,7 @@
         <button class="btn btn-block btn-success" (click)="save()" [disabled]="car">GO</button>
       </td>
     </tr>
-    <tr *ngFor="let row of data">
+    <tr *ngFor="let row of data" (mouseenter)="details(row)">
       <td>{{row.adat.id}}</td>
       <td>{{row.adat.personId}}</td>
       <td>{{row.adat.carId}}</td>
@@ -63,8 +63,7 @@
       <td>{{row.adat.cost}}</td>
       <td>
         <div class="btn-group">
-          <button class="btn btn-primary" (click)="details(row)">Details</button>
-          <button class="btn btn-danger" (click)="deleteRow(row.key)">Delete</button>
+          <button class="btn btn-danger btn-block" (click)="deleteRow(row.key)">Delete</button>
         </div>
       </td>
     </tr>
@@ -109,9 +108,11 @@
     <div class="col-4">
       <ul class="list-group">
         <li class="list-group-item active">Petrol Station</li>
-        <li class="list-group-item">Location: {{more.ps.location}}</li>
-        <li class="list-group-item">Petrol Price: {{more.ps.petrolPrice}} Ft</li>
-        <li class="list-group-item">Diesel Price: {{more.ps.dieselPrice}} Ft</li>
+        <li class="list-group-item">{{more.ps.Company}}</li>
+        <li class="list-group-item">Location:
+          <br> {{more.ps.Location}}</li>
+        <li class="list-group-item">Petrol Price: {{more.ps['Petrol (HUF)']}} Ft</li>
+        <li class="list-group-item">Diesel Price: {{more.ps['Diesel (HUF)']}} Ft</li>
 
       </ul>
     </div>

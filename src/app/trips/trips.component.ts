@@ -118,7 +118,7 @@ export class TripsComponent implements OnInit {
       }
     }
     for (let i of this.ps) {
-      if (parseInt(i.adat.id) == parseInt(row.adat.pstationIds)) {
+      if (parseInt(i.adat.Id) == parseInt(row.adat.pstationIds)) {
         this.more.ps = i.adat;
       }
     }
