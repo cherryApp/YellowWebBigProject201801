@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: rgb(199, 173, 158);">
+  <a class="navbar-brand" routerLink="/">
+    <img src="http://www.caritascatolica-oradea.ro/wp-content/uploads/2013/11/logo-szines.jpg" width="auto" height="40" class="d-inline-block align-top"
+      alt=""> &nbsp; Végtelen Nyugalom Idősek Otthona</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" [class.show]="showDropdown" (click)="toggleDropdown()">
+        <a (click)="disableClick($event)" class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Adattáblák
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" [class.show]="showDropdown" style="background-color: rgb(223, 201, 188);">
+          <a routerLink="{{ menuPoint.url }}" *ngFor="let menuPoint of menuList" class="dropdown-item">
+            {{ menuPoint.label }}
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
