@@ -13,6 +13,7 @@ import { UsersComponent } from './users/users.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { FuelingComponent } from './fueling/fueling.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   { path: '', component: UsersComponent, pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
     UsersComponent,
     VehiclesComponent,
     DriversComponent,
-    FuelingComponent
+    FuelingComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

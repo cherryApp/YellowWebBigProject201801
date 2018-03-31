@@ -1,0 +1,8 @@
+.navbar .navbar-nav>li>a {
+  color: white;
+}
+
+.navbar .navbar-nav>li>a:hover,
+.navbar .navbar-nav>li>a:focus {
+  color: #17a2b8;
+}
