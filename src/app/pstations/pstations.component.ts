@@ -21,7 +21,6 @@ export class PstationsComponent implements OnInit {
     omv: 'https://crunchbase-production-res.cloudinary.com/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1446785794/xzqjiv2ze4u1x23gxts7.png',
     shell: 'https://pbs.twimg.com/profile_images/580803697304702976/h-QZArRy_400x400.png',
     lukoil: 'https://pbs.twimg.com/profile_images/3717020741/bd978ab46fc1a1b9bb73c62520e6e4f0.jpeg',
-    agip: 'https://cdn.iconverticons.com/files/png/0f8a75a97a799f2d_256x256.png',
     avia: 'https://cdn6.aptoide.com/imgs/0/8/3/083e85e69a5dc249af0f5aa330f9ec05_icon.png?w=256'
   };
   lastKey: string = "";
@@ -58,7 +57,7 @@ export class PstationsComponent implements OnInit {
   ngOnInit() {
   }
 
-  sort(key): void {
+  sortTable(key): void {
 
     //kiürítem a korábbi rendezést
     //majd beállítom a rendezés sorrendjét(csökkenő v. növekvő)
@@ -71,16 +70,16 @@ export class PstationsComponent implements OnInit {
     else {
       this.order = 1;
     }
-    this.sorts[key] = this.order == -1 ? 'up' : 'down';
+    //this.sorts[key] = this.order == -1 ? 'up' : 'down';
     this.lastKey = key;
     this.tableData.sort((a, b) => {
-      return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
+      return a.adat[key].toString().localeCompare(b.adat[key].toString()) * this.order;
     });
   }
 
   //Update - adatok módosítása a pStation adatbázisban
   dataUpdate(row): void {
-    this.db.object('uzemanyag/pstations/' + row.key).update(row.data);
+    this.db.object('uzemanyag/pstations/' + row.key).update(row.adat);
   }
 
   //Delete - adatok törlése a pStation adatbázisban

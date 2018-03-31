@@ -4,19 +4,13 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th *ngFor="let key of keys" (click)="sort(key)">
-              <span [class.show]="sorts[key] == 'down'">
-                <i class="fas fa-sort-down"></i>
-              </span>
-              <span [class.show]="sorts[key] == 'up'">
-                <i class="fas fa-sort-up"></i>
-              </span>
+            <th *ngFor="let key of keys" (click)="sortTable(key)" class="sortKey">
               {{ key }}
             </th>
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody [ngStyle]="{'animation-name': 'table', 'animation-duration': '2s'}">
           <tr>
             <td *ngFor="let key of keys">
               <input [(ngModel)]="newRow[key]" type="text" class="form-control">
