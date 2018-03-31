@@ -10,7 +10,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody [ngStyle]="{'animation-name': 'table', 'animation-duration': '2s'}">
+        <tbody>
           <tr>
             <td *ngFor="let key of keys">
               <input [(ngModel)]="newRow[key]" type="text" class="form-control">
