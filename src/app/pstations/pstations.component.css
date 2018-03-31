@@ -1,5 +1,56 @@
 .sortKey:hover {
   cursor: pointer;
-  text-shadow: 1px 1px #000;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
   color: #218838;
 }
+
+img:hover {
+  cursor: pointer;
+  /* box-shadow: 5px 5px 5px 5px #000;*/
+  border-radius: 40px;
+  transform: rotateY(60deg);
+  transform-style: preserve-3d;
+  /* transform: rotate(20deg);*/
+  /*transform: skewY(20deg);*/
+}
+
+table {
+  background: radial-gradient(rgb(148, 161, 161), rgb(103, 157, 202), rgb(163, 241, 238));
+  box-shadow: 2px 2px 2px 2px rgb(44, 58, 70);
+  width: 1000px;
+  transition-property: width, height;
+  transition-duration: 3s;
+}
+
+table:hover {
+  width: 1100px;
+  height: 600px;
+}
+
+input:focus {
+  box-shadow: 3px 3px rgb(58, 75, 173);
+}
+
+input:hover {
+  cursor: pointer;
+}
+
+/*
+table {
+  animation: mymove 5s;
+  animation-iteration-count: inherit;
+}
+
+@-webkit-keyframes mymove {
+  0% {
+    top: 0px;
+    background: red;
+    width: 800px;
+  }
+  100% {
+    top: 800px;
+    background: yellow;
+    width: 1000px;
+  }
+}
+*/

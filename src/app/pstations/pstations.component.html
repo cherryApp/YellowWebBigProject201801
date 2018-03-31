@@ -1,6 +1,24 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-12">
+    <div class="col-3">
+      <a href="https://mol.hu/hu/">
+        <img src="https://pbs.twimg.com/profile_images/378800000474004977/cf7c3082d7151bad59c596ac0def6604.png" alt="_blank">
+      </a>
+      <a href="https://www.omv.hu/portal/01/hu/private">
+        <img src="https://crunchbase-production-res.cloudinary.com/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1446785794/xzqjiv2ze4u1x23gxts7.png"
+          alt="blank">
+      </a>
+      <a href="https://www.shell.hu/">
+        <img src="https://pbs.twimg.com/profile_images/580803697304702976/h-QZArRy_400x400.png" alt="blank">
+      </a>
+      <a href="http://www.lukoil.hu/">
+        <img src="https://pbs.twimg.com/profile_images/3717020741/bd978ab46fc1a1b9bb73c62520e6e4f0.jpeg" alt="blank">
+      </a>
+      <a href="https://www.avia.hu/">
+        <img src="https://cdn6.aptoide.com/imgs/0/8/3/083e85e69a5dc249af0f5aa330f9ec05_icon.png?w=256" alt="blank">
+      </a>
+    </div>
+    <div class="col-8">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -28,11 +46,27 @@
                 <button (click)="dataUpdate(row)" class="btn btn-primary">Update</button>
                 <button (click)="dataDelete(row.key)" class="btn btn-danger">Delete</button>
               </div>
-
             </td>
           </tr>
         </tbody>
       </table>
+      <form>
+        <div class="form-group">
+          <span>
+            <i class="fas fa-search"></i>
+            <input name="search" [(ngModel)]="searchInput" type="search" class="form-control" id="search" placeholder="search in the table">
+          </span>
+        </div>
+        <div class="form-group">
+          <select name="select" class="form-control" id="property" [(ngModel)]="select[k]">
+            <option value="location">Location</option>
+            <option value="company">Company</option>
+            <option value="dieselPrice">Diesel price</option>
+            <option value="petrolPrice">Petrol price</option>
+          </select>
+        </div>
+        <button (click)="search(data)" class="btn btn-primary">Search</button>
+      </form>
     </div>
   </div>
 </div>
