@@ -20,7 +20,7 @@ export class VehiclesComponent implements OnInit {
     "Gyártó",
     "Típus",
     "Rendszám",
-    "Fogyasztás(Ft)"
+    "Fogyasztás(l)"
   ];
   lastKey: string = "";
   sorts: any = {};
