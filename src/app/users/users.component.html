@@ -1,93 +1,34 @@
-<<<<<<< HEAD
-<div class="row" *ngIf="users">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
-                    <span [class.show]="sorts[key] == 'down'">
-                        <i class="fas fa-sort-amount-down"></i>
-                    </span>
-                    <span [class.show]="sorts[key] == 'up'">
-                        <i class="fas fa-sort-amount-up"></i>
-                    </span>
-                    {{ key }}
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- A táblázat első fix sorában adjuk hozzá az új rekordokat. -->
-            <tr>
-                <!-- Bejárjuk a kulcsok tömbjét, és annak alapján jelenítjük meg a mezőket. -->
-                <td *ngFor="let key of keys">
-                    <!-- A newRow objektumban tárolom az új rekord adatait. -->
-                    <input [(ngModel)]="newRow[key]" type="text" class="form-control">
-                </td>
-                <td>
-                    <div class="btn-group">
-                        <!-- Kattintásra átadom az új rekord adatait a dataAdd metódusnak. -->
-                        <button (click)="dataAdd(newRow)" class="btn btn-danger">add</button>
-                    </div>
-                </td>
-            </tr>
-            <!-- Az ngFor direktíva bejárja a tableData tömböt. -->
-            <tr *ngFor="let row of tableData">
-                <!-- A megjelenítéshez a kulcsok tömbjét járjuk be. -->
-                <td *ngFor="let key of keys">
-                    <!-- A key pld ilyen értékeket vesz fel: name, address, status ...
-                Például a row.data[key] értéke a row.data.name, ha a key = 'name'.
-                Ezt a tulajdonságot, összekötöm az ngModel segítségével az input elemmel. -->
-                    <input [(ngModel)]="row.data[key]" type="text" class="form-control">
-                </td>
-                <td>
-                    <!-- A gombcsoport segítségével módosítom vagy törlöm az adatokat. -->
-                    <div class="btn-group">
-                        <!-- Módosítás: kattintás hatására meghívom a dataUpdate metódust és
-                  átadom neki az adott adat-sort. -->
-                        <button (click)="dataUpdate(row)" class="btn btn-primary">update</button>
-                        <!-- Törlés: kattintás hatására meghívom a dataDelete metódust és
-                  átadom neki az adott adat-sorban található kulcsot, azaz a student
-                  adatbázis kulcsát. -->
-                        <button (click)="dataDelete(row.key)" class="btn btn-danger">delete</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-=======
 <div>&nbsp;</div>
 <table class="table table-bordered">
-  <thead class="bg-info">
-    <tr>
-      <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
-        {{ key }}
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td *ngFor="let key of keys">
-        <input [(ngModel)]="newRow[key]" type="text" class="form-control">
-      </td>
-      <td>
-        <div class="btn-group">
-          <button (click)="dataAdd(newRow)" class="btn btn-danger">Hozzáadás</button>
-        </div>
-      </td>
-    </tr>
-    <tr *ngFor="let row of tableData">
-      <td *ngFor="let key of keys">
-        <input [(ngModel)]="row.data[key]" type="text" class="form-control">
-      </td>
-      <td>
-        <div class="btn-group">
-          <button (click)="dataUpdate(row)" class="btn btn-info">Frissítés</button>
-          <button (click)="dataDelete(row.key)" class="btn btn-danger">Törlés</button>
-        </div>
-      </td>
-    </tr>
-  </tbody>
+    <thead class="bg-info">
+        <tr>
+            <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
+                {{ key }}
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td *ngFor="let key of keys">
+                <input [(ngModel)]="newRow[key]" type="text" class="form-control">
+            </td>
+            <td>
+                <div class="btn-group">
+                    <button (click)="dataAdd(newRow)" class="btn btn-danger">Hozzáadás</button>
+                </div>
+            </td>
+        </tr>
+        <tr *ngFor="let row of tableData">
+            <td *ngFor="let key of keys">
+                <input [(ngModel)]="row.data[key]" type="text" class="form-control">
+            </td>
+            <td>
+                <div class="btn-group">
+                    <button (click)="dataUpdate(row)" class="btn btn-info">Frissítés</button>
+                    <button (click)="dataDelete(row.key)" class="btn btn-danger">Törlés</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
 </table>
->>>>>>> cdaf205d1f097e5dd3ce52c23a80167564e1996f
