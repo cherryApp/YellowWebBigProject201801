@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataImportService } from '../data-import.service';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-customers',
@@ -8,8 +8,7 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  landlordRef: AngularFireObject<any>;
-  landlordData: Array<any> = [];
+  data: any;
   newRow: any = {};
   keys: Array<string> = [
     "landlordId",
@@ -23,21 +22,11 @@ export class CustomersComponent implements OnInit {
   currentData: any;
 
   constructor(
+    private importData: DataImportService,
     private db: AngularFireDatabase
   ) {
-    this.landlordRef = db.object('landlord');
-    this.landlordRef.valueChanges().subscribe(
-      values => {
-        this.landlordData = [];
-        for (var k in values) {
-          this.landlordData.push({
-            key: k,
-            data: values[k]
-          });
-        }
-      }
-    )
-
+    this.data = this.importData.landlordData;
+    console.log(this.data);
   }
 
   ngOnInit() {
