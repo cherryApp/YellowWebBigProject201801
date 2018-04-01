@@ -17,10 +17,10 @@ export class UsersComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
-    "city",
-    "email",
-    "id",
-    "name"
+    "Id",
+    "Név",
+    "Email",
+    "Város"
   ];
   lastKey: string = "";
   sorts: any = {};
