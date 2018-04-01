@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import { Observable } from '@firebase/util';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from '@firebase/util';
 
 @Component({
   selector: 'app-people',
@@ -15,7 +15,7 @@ export class PeopleComponent implements OnInit {
   item: Observable<any>;
   tableData: Array<any> = [];
   newRow: any = {};
-  keys: Array<string> = ['id', 'firstName', 'lastName', 'city', 'email', 'driving_license_no', 'money', 'status'];
+  keys: Array<string> = ['id', 'firstName', 'lastName', 'city', 'email', 'drivingLicenceNumber', 'money', 'status'];
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
@@ -90,5 +90,11 @@ export class PeopleComponent implements OnInit {
     this.db.list('uzemanyag/people/').push(record).then(r => this.newRow = {});
   }
 
+  /**
+   * kártya feltöltése fixen 50000Ft-al.
+   */
+  creditUpload(key): void {
+    this.db.object('uzemanyag/people/' + key).update({ money: 50000 });
+  }
 
 }

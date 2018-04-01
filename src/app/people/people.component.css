@@ -1,7 +1,7 @@
-.sortKey:hover {
+thead:hover {
   cursor: pointer;
 }
 
-.sortKey {
+thead {
   text-align: center;
 }
