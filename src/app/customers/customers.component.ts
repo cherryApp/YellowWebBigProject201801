@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataImportService } from '../data-import.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-customers',
@@ -20,7 +21,10 @@ export class CustomersComponent implements OnInit {
   order: number = 1;
   currentData: any;
 
-  constructor(private importData: DataImportService) {
+  constructor(
+    private importData: DataImportService,
+    private db: AngularFireDatabase
+  ) {
     this.data = this.importData.landlordData;
     console.log(this.data);
   }
@@ -29,7 +33,7 @@ export class CustomersComponent implements OnInit {
   }
 
   dataAdd(record: any) {
-    this.data.list('landlord').push(record).then(
+    this.db.list('landlord').push(record).then(
       r => this.newRow = {}
     );
   }
@@ -37,9 +41,12 @@ export class CustomersComponent implements OnInit {
   dataUpdate(row): void {
     // Rámutatok a távoli adatbázisban az adott kulcsú sorra.
     // Erre hívom meg az update metódust, aminek átadom az új adatokat.
-    this.data.object('landlord/' + row.key).update(row.data);
+    this.db.object('landlord/' + row.key).update(row.data);
   }
 
+  dataDelete(key: string): void {
+    this.db.object('landlord/' + key).remove();
+  }
   
   sort(key): void {
     for (var k in this.sorts) {
@@ -53,7 +60,7 @@ export class CustomersComponent implements OnInit {
     this.sorts[key] = this.order == -1 ? 'up' : 'down';
 
     this.lastKey = key;
-    this.tableData.sort((a, b) => {
+    this.data.sort((a, b) => {
       return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
     });
   }
