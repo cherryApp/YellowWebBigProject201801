@@ -1,0 +1,45 @@
+ [
+  {
+    "key": "-L8nj1dM-1qyLpRcpGbp",
+    "data": {
+      "city": "Budapest",
+      "officeID": "01"
+    }
+  },
+  {
+    "key": "-L8nj4ZvKYelNrptQHWG",
+    "data": {
+      "city": "Barcs",
+      "officeID": "02"
+    }
+  },
+  {
+    "key": "-L8nj7RI5CRCJQoxVo4t",
+    "data": {
+      "city": "Szeged",
+      "officeID": "03"
+    }
+  },
+  {
+    "key": "-L8njFYB28DWkWYg_3Sq",
+    "data": {
+      "city": "Sopron",
+      "officeID": "04"
+    }
+  },
+  {
+    "key": "-L8o1ZhHogyO0rgF9utk",
+    "data": {
+      "city": "Zalaegerszeg",
+      "officeID": "05"
+    }
+  },
+  {
+    "key": "-L8o6n6UQrKlDQaibHLe",
+    "data": {
+      "city": "Mályi",
+      "officeID": "06"
+    }
+  }
+]
+  
