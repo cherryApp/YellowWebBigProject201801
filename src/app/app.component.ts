@@ -15,8 +15,6 @@ export class AppComponent {
     pass: ""
   };
   user: any;
-
- 
   currentData: any;
 
   constructor(
