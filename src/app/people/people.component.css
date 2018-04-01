@@ -1,0 +1,7 @@
+.sortKey:hover {
+  cursor: pointer;
+}
+
+.sortKey {
+  text-align: center;
+}
