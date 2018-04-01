@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   loginData: { email: string, pass: string } = {
@@ -15,14 +14,8 @@ export class AppComponent {
   user: any;
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase
-  ) { }
+  ) {
 
-  ngOnInit() {
-    this.afAuth.authState.subscribe(
-      user => this.user = user,
-      error => console.error(error)
-    );
   }
 
   login(): void {
@@ -31,6 +24,13 @@ export class AppComponent {
       this.loginData.pass
     ).then(
       value => console.log(value),
+      error => console.error(error)
+    );
+  }
+
+  ngOnInit() {
+    this.afAuth.authState.subscribe(
+      user => this.user = user,
       error => console.error(error)
     );
   }

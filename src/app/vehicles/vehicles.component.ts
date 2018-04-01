@@ -17,10 +17,10 @@ export class VehiclesComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
-    "gyártó",
-    "típus",
-    "cm3",
-    "fogyasztás(l)"
+    "Gyártó",
+    "Típus",
+    "Cm3",
+    "Fogyasztás(l)"
   ];
   lastKey: string = "";
   sorts: any = {};
