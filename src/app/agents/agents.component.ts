@@ -21,7 +21,7 @@ export class AgentsComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
-    "agentId",
+    "agentID",
     "agentName",
     "email",
     "officeID",
