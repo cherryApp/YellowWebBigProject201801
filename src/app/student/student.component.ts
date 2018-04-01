@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   providers: []
 })
 export class StudentComponent implements OnInit {
-  loginData: {email: string, pass: string} = {
+  loginData: { email: string, pass: string } = {
     email: "",
     pass: ""
   };
@@ -78,7 +78,7 @@ export class StudentComponent implements OnInit {
     this.sorts[key] = this.order == -1 ? 'up' : 'down';
 
     this.lastKey = key;
-    this.tableData.sort( (a, b) => {
+    this.tableData.sort((a, b) => {
       return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
     });
   }
@@ -104,7 +104,7 @@ export class StudentComponent implements OnInit {
   dataUpdate(row): void {
     // Rámutatok a távoli adatbázisban az adott kulcsú student-re.
     // Erre hívom meg az update metódust, aminek átadom az új adatokat.
-    this.db.object('student/'+row.key).update(row.data);
+    this.db.object('student/' + row.key).update(row.data);
   }
 
   /**
@@ -113,7 +113,7 @@ export class StudentComponent implements OnInit {
   dataDelete(key: string): void {
     // Rámutatok a távoli adatbázisban az adott kulcsú student-re.
     // Erre hívom meg a remove metódust.
-    this.db.object('student/'+key).remove();
+    this.db.object('student/' + key).remove();
   }
 
   /**

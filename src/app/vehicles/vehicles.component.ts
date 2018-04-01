@@ -19,8 +19,8 @@ export class VehiclesComponent implements OnInit {
   keys: Array<string> = [
     "Gyártó",
     "Típus",
-    "Cm3",
-    "Fogyasztás(l)"
+    "Rendszám",
+    "Fogyasztás(Ft)"
   ];
   lastKey: string = "";
   sorts: any = {};
