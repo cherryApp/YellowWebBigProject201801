@@ -1,3 +1,17 @@
-form {
-    padding-top: 20px;
+.row {
+    margin-top: 150px;
+}
+
+p {
+    position: relative;
+}
+
+i {
+    position: absolute;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+[type='button'] {
+box-shadow: 0 5px 5px rgb(185, 185, 185);
 }

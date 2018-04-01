@@ -1,18 +1,28 @@
 <div class="row">
-  <div class="col-6 offset-3">
+  <div class="col-12 col-sm-8 offset-sm-2 col-lg-4 offset-lg-4">
     <div *ngIf="afAuth.authState | async as user; else showLogin">
-      <h1>Hello {{ user.displayName }}!</h1>
-      <button (click)="logout()">Logout</button>
+      <h1 class="text-center">Hello Admin!</h1>
+      <button (click)="logout()" class="btn btn-danger btn-block btn-lg">Logout</button>
     </div>
     <br>
     <ng-template #showLogin>
       <div class="form-group">
-        <label for="email">Email</label>
-        <input class="form-control" name="email" [(ngModel)]="loginData.email" type="text" id="email">
+        <label for="email"></label>
+        <p>
+          <span>
+            <i class="far fa-envelope fa-2x"></i>
+          </span>
+          <input class="form-control text-center" name="email" [(ngModel)]="loginData.email" type="text" id="email">
+        </p>
       </div>
       <div class="form-group">
-        <label for="pass">Password</label>
-        <input class="form-control" type="text" name="pass" [(ngModel)]="loginData.pass" id="pass">
+        <label for="pass"></label>
+        <p>
+          <span>
+            <i class="fas fa-key fa-2x"></i>
+          </span>
+          <input class="form-control text-center" type="text" name="pass" [(ngModel)]="loginData.pass" id="pass">
+        </p>
       </div>
       <button type="submit" class="btn btn-primary btn-block btn-lg" (click)="login()">
         Login
