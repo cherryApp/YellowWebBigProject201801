@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
@@ -11,16 +10,17 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+
   user: any;
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
-    "id",
-    "name",
-    "email",
-    "city"
+    "Id",
+    "Név",
+    "Email",
+    "Város"
   ];
   lastKey: string = "";
   sorts: any = {};
@@ -28,113 +28,58 @@ export class UsersComponent implements OnInit {
   currentData: any;
 
   constructor(private db: AngularFireDatabase) {
+
     for (let k of this.keys) {
       this.sorts[k] = {};
     }
 
-    // The itemRef: point to student object in the database.
-    this.itemRef = db.object('student');
+    this.itemRef = db.object('users');
 
+    this.itemRef.valueChanges().subscribe(values => {
 
+      this.tableData = [];
 
-    user: any;
-    itemRef: AngularFireObject<any>;
-    item: Observable<any>;
-    tableData: Array < any > =[];
-    newRow: any = {};
-    keys: Array < string > =[
-      "city",
-      "email",
-      "id",
-      "name"
-    ];
-    lastKey: string = "";
-    sorts: any = {};
-    order: number = 1;
-    currentData: any;
-
-    constructor(private db: AngularFireDatabase) {
-
-      for (let k of this.keys) {
-        this.sorts[k] = {};
+      for (var k in values) {
+        this.tableData.push({
+          key: k,
+          data: values[k]
+        });
       }
+    });
+  }
 
-      this.itemRef = db.object('users');
+  ngOnInit() {
+  }
 
-      this.itemRef.valueChanges().subscribe(values => {
-
-        this.tableData = [];
-
-        for (var k in values) {
-          this.tableData.push({
-            key: k,
-            data: values[k]
-          });
-        }
-      });
+  sort(key): void {
+    for (var k in this.sorts) {
+      this.sorts[k] = "";
     }
-
-    // Push new rows to the tableData with key and value.
-    for (var k in values) {
-      this.tableData.push({
-        key: k,
-        data: values[k]
-      });
+    if (this.lastKey == key) {
+      this.order *= -1;
+    } else {
+      this.order = 1;
     }
-  }
-    )
-}
-ngOnInit() {
-}
-sort(key): void {
-  for(var k in this.sorts) {
-  this.sorts[k] = "";
-}
-if (this.lastKey == key) {
-  this.order *= -1;
-} else {
-  this.order = 1;
-}
-this.sorts[key] = this.order == -1 ? 'up' : 'down';
+    this.sorts[key] = this.order == -1 ? 'up' : 'down';
 
-this.lastKey = key;
-this.tableData.sort((a, b) => {
-  return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
-});
+    this.lastKey = key;
+    this.tableData.sort((a, b) => {
+      return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
+    });
   }
 
-
-
-sort(key): void {
-  for(var k in this.sorts) {
-  this.sorts[k] = "";
-}
-if (this.lastKey == key) {
-  this.order *= -1;
-} else {
-  this.order = 1;
-}
-this.sorts[key] = this.order == -1 ? 'up' : 'down';
-
-this.lastKey = key;
-this.tableData.sort((a, b) => {
-  return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
-});
+  dataUpdate(row): void {
+    this.db.object('users/' + row.key).update(row.data);
   }
 
-dataUpdate(row): void {
-  this.db.object('users/' + row.key).update(row.data);
+  dataDelete(key: string): void {
+    this.db.object('users/' + key).remove();
+  }
+
+  dataAdd(record: any) {
+    this.db.list('users').push(record).then(
+      r => this.newRow = {}
+    );
+  }
+
 }
-
-dataDelete(key: string): void {
-  this.db.object('users/' + key).remove();
-}
-
-dataAdd(record: any) {
-  this.db.list('users').push(record).then(
-    r => this.newRow = {}
-  );
-}
-
-
-
