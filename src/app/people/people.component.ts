@@ -15,7 +15,7 @@ export class PeopleComponent implements OnInit {
   item: Observable<any>;
   tableData: Array<any> = [];
   newRow: any = {};
-  keys: Array<string> = ['id', 'firstName', 'lastName', 'city', 'email', 'driving license no.', 'money', 'status'];
+  keys: Array<string> = ['id', 'firstName', 'lastName', 'city', 'email', 'driving_license_no', 'money', 'status'];
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
