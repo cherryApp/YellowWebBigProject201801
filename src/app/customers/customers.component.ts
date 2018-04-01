@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { SortingService } from '../sorting.service';
+import { Places } from './places';
 
 @Component({
   selector: 'app-customers',
@@ -28,10 +29,13 @@ export class CustomersComponent implements OnInit {
     "age",
     "address"
   ];
-  randomCityNames: Array<string> = ["Aldwall", "Crystalston", "Fallhill", "Coldholt", "Marshton", "Roseness", "Marbleham", "Starrybridge", "Greenspring", "Wellspring", "Hedgebourne", "Fairdragon", "Northnesse", "Spellborough", "Silversage", "Lorwald", "Icesage", "Icemarble", "Oldgold", "Blueviolet", "Fayhaven", "Starryhall", "Wellness", "Stonespell", "Shadowwyvern", "Flowerdell", "Merribush", "Fogmere", "Riverhedge", "Roseby", "Grasskeep",];
+
   randomFirstNames: Array<string> = ["Sophey", "Eberto", "Marcela", "Penny", "Karita", "Artair", "Hyacinthie", "Lucais", "Sherill", "Merrill", "Crissy", "Red", "Sidoney", "Trefor", "Linda", "Doni", "Frédi", "Peti", "Carey", "Nobe", "Isahella", "Pacorro", "Debee", "Hastie", "Willetta", "Hanan", "Dinny", "Edd", "Jeannette", "Rufe", "Stephine", "Jaime", "Sibylle", "Horatio", "Tybie"];
   randomLastNames: Array<string> = ["Swartz", "Holmberg", "Bedard", "Zane", "Moravcsik", "Koutrakis", "Haykov", "Russ", "Picasso", "Dambry", "Lacerda", "Nasca", "Monzac", "Akiba", "Dubéczi", "Pataki", "Kovács", "Bánfi", "Wentworth", "Alix", "Howells", "Priest", "Chang", "Field-daly", "Dininny", "Kirscht", "Taborsky", "Fung", "Oliva", "Deland", "Barcus", "Vanheeckeren", "Dorfman", "Genetti", "Birnbaum"]
-
+  places1: Places = new Places();
+  placesRand: Array<string> = this.places1.placesArray;
+  namesRand: Array<string> = this.places1.namesArray;
+  lastNamesRand: Array<string> = this.places1.lastNamesArray;
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
@@ -114,9 +118,9 @@ export class CustomersComponent implements OnInit {
   randomAdd() {
     this.randomRow = {
       "customerId": `${Math.floor((Math.random() * 10000) + 1)}`,
-      "customerName": `${this.randomFirstNames[Math.floor((Math.random() * this.randomFirstNames.length - 1) + 1)]} ${this.randomLastNames[Math.floor((Math.random() * this.randomLastNames.length - 1) + 1)]}`,
+      "customerName": `${this.namesRand[Math.floor((Math.random() * this.namesRand.length - 1) + 1)]} ${this.lastNamesRand[Math.floor((Math.random() * this.lastNamesRand.length - 1) + 1)]}`,
       "age": `${Math.floor((Math.random() * 100) + 1)}`,
-      "address": `${this.randomCityNames[Math.floor((Math.random() * this.randomCityNames.length - 1) + 1)]}`
+      "address": `${this.placesRand[Math.floor((Math.random() * this.placesRand.length - 1) + 1)]}`
     }
     this.dataAdd(this.randomRow);
   }
