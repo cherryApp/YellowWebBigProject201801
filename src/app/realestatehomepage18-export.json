@@ -1,10 +1,55 @@
 {
-  "agent" : [ null, {
-    "agentId" : 1,
-    "agentName" : "Kiss Józsi",
-    "email" : "kj@gmail.com",
-    "phone" : "+36301231234"
-  } ],
+  "agent" : {
+    "-L9-bDAUYQrtXe9_om2p" : {
+      "agentID" : "01",
+      "agentName" : "Labanc László",
+      "email" : "ll@gmail.com",
+      "officeID" : "01",
+      "phone" : "+36201231234"
+    },
+    "-L9-bO8NuVJ19Z-4XC7n" : {
+      "agentID" : "02",
+      "agentName" : "Kuruc Kálmán",
+      "email" : "kk@gmail.com",
+      "officeID" : "02",
+      "phone" : "+36301111112"
+    },
+    "-L9-bch0v6M92qI9LrsC" : {
+      "agentID" : "03",
+      "agentName" : "Mai Manó",
+      "email" : "mm@gmail.com",
+      "officeID" : "02",
+      "phone" : "+36202223334"
+    },
+    "-L9-boUSWZCwkcEzI-hJ" : {
+      "agentID" : "04",
+      "agentName" : "Kancsi Kati",
+      "email" : "kk2@gmail.com",
+      "officeID" : "04",
+      "phone" : "+36701114445"
+    },
+    "-L9-bxfJMeA8NRe2qJJt" : {
+      "agentID" : "05",
+      "agentName" : "Babar Béla",
+      "email" : "bb@gmail.com",
+      "officeID" : "03",
+      "phone" : "+36704441112"
+    },
+    "-L9-c97nhZx7MyniZ9Lh" : {
+      "agentID" : "06",
+      "agentName" : "Agilis Aladár",
+      "email" : "aa@citromail.hu",
+      "officeID" : "01",
+      "phone" : "+36702220001"
+    },
+    "-L9-cN6TB3sCFIgWHqbq" : {
+      "agentID" : "07",
+      "agentName" : "Citrom Cecília",
+      "email" : "cc@hotmail.com",
+      "officeID" : "05",
+      "phone" : "+36203332221"
+    }
+  },
   "landlord" : [ null, {
     "landlordId" : 1,
     "name" : "Erős Pista",
@@ -33,7 +78,7 @@
       "officeID" : "05"
     },
     "-L8o6n6UQrKlDQaibHLe" : {
-      "city" : "Mályiami Beach",
+      "city" : "Mályi",
       "officeID" : "06"
     }
   },
