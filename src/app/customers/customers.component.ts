@@ -29,9 +29,6 @@ export class CustomersComponent implements OnInit {
     "age",
     "address"
   ];
-
-  randomFirstNames: Array<string> = ["Sophey", "Eberto", "Marcela", "Penny", "Karita", "Artair", "Hyacinthie", "Lucais", "Sherill", "Merrill", "Crissy", "Red", "Sidoney", "Trefor", "Linda", "Doni", "Frédi", "Peti", "Carey", "Nobe", "Isahella", "Pacorro", "Debee", "Hastie", "Willetta", "Hanan", "Dinny", "Edd", "Jeannette", "Rufe", "Stephine", "Jaime", "Sibylle", "Horatio", "Tybie"];
-  randomLastNames: Array<string> = ["Swartz", "Holmberg", "Bedard", "Zane", "Moravcsik", "Koutrakis", "Haykov", "Russ", "Picasso", "Dambry", "Lacerda", "Nasca", "Monzac", "Akiba", "Dubéczi", "Pataki", "Kovács", "Bánfi", "Wentworth", "Alix", "Howells", "Priest", "Chang", "Field-daly", "Dininny", "Kirscht", "Taborsky", "Fung", "Oliva", "Deland", "Barcus", "Vanheeckeren", "Dorfman", "Genetti", "Birnbaum"]
   places1: Places = new Places();
   placesRand: Array<string> = this.places1.placesArray;
   namesRand: Array<string> = this.places1.namesArray;
