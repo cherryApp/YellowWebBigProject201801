@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
   user: any;
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
-  modalArray: Array<any> = ['default.jpg'];
+  modalArray: Array<any> = [{picture: 'default.jpg'}];
   tableData: Array<any> = [];
   newRow: any = {};
   currentRow: any = {

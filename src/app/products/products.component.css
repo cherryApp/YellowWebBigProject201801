@@ -10,3 +10,17 @@ th.productName {
 img {
     width:400px;
 }
+
+tbody tr:hover {
+    background: lightblue;
+  }
+  
+  .table-striped tbody tr:nth-of-type(even):hover {
+    background: lightblue;
+  }
+
+  
+  th:hover {
+    cursor: pointer;
+  }
+  
