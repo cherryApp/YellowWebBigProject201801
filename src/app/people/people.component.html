@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-12">
-      <div class="table-responsive">
+      <div class="table">
         <table class="table table-hover table-striped">
           <thead>
             <tr>
@@ -16,8 +16,8 @@
                 <input [(ngModel)]="newRow[key]" type="text" class="form-control">
               </td>
               <td>
-                <div class="btn-group">
-                  <button (click)="dataAdd(newRow)" class="btn btn-success">New Person</button>
+                <div>
+                  <button type="button" (click)="dataAdd(newRow)" class="btn btn-success btn-block">New Person</button>
                 </div>
               </td>
             </tr>
@@ -29,13 +29,9 @@
                 <div class="btn-group">
                   <button (click)="dataUpdate(row)" class="btn btn-primary">Update</button>
                   <button (click)="dataDelete(row.key)" class="btn btn-danger">Delete</button>
+                  <button (click)="creditUpload(row.key)" class="btn btn-success">Reload credit card</button>
                 </div>
               </td>
-              <div class="btn-group">
-                <td>
-                  <button (click)="creditUpload(row.key)" class="btn btn-success">Reload credit card</button>
-                </td>
-              </div>
             </tr>
           </tbody>
         </table>
