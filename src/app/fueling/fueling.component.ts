@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
+
 @Component({
   selector: 'app-fueling',
   templateUrl: './fueling.component.html',
@@ -19,14 +20,18 @@ export class FuelingComponent implements OnInit {
     "Összeg(Ft)",
     "Üzemanyag(l)",
     "Időpont",
-    "Megtett út(km)"
+    "Megtett út(km)",
+    "Sofőr(id)",
+    "Jármű (rendszám)"
   ];
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
   currentData: any;
+  
 
   constructor(private db: AngularFireDatabase) {
+    
     for (let k of this.keys) {
       this.sorts[k] = {};
     }

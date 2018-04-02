@@ -13,6 +13,7 @@
       <td *ngFor="let key of keys">
         <input [(ngModel)]="newRow[key]" type="text" class="form-control">
       </td>
+      <td><div drivers="drivers"></div></td>
       <td>
         <div class="btn-group">
           <button (click)="dataAdd(newRow)" class="btn btn-danger">add</button>
