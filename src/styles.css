@@ -9,3 +9,8 @@ span.sort-sign.show {
 span.sort-sign {
     display: none;
 }
+
+
+body {
+    overflow-x:hidden;
+}

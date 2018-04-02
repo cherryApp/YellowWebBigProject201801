@@ -31,6 +31,14 @@ export class ProductsComponent implements OnInit {
     picture: 'default.jpg'
   };
   filePath: string = "default.jpg";
+  keysAlias: Array<string> = [
+    "Product Name",
+    "Product Code",
+    "Price",
+    "Stock (pcs)",
+    "Picture Filename",
+    "Details"
+  ];
   keys: Array<string> = [
     "productName",
     "itemCode",
@@ -54,13 +62,12 @@ constructor(
     for (let k of this.keys) {
       this.sorts[k] = {};
     }
-    
     this.itemRef = db.object('products');
-    
+
     this.itemRef.valueChanges().subscribe(
       values => {
         this.tableData = [];
-        
+
         for (var k in values) {
           this.tableData.push({
             key: k,
@@ -70,15 +77,14 @@ constructor(
       }
     );
   }
-  
-  
+
   ngOnInit() {
     this.afAuth.authState.subscribe(
       user => this.user = user,
       error => console.error(error)
     );
   }
-  
+
 
   /**
    * Login with email and password to the firebase cloud.
@@ -93,7 +99,7 @@ constructor(
       error => console.error(error)
     );
   }
-  
+
   /**
    * Frissítjük az adott adat-sort a távoli adatbázisban.
    * @param row {object}: a frissíteni kíván adatsor.
@@ -102,9 +108,8 @@ constructor(
     // Rámutatok a távoli adatbázisban az adott kulcsú student-re.
     // Erre hívom meg az update metódust, aminek átadom az új adatokat.
     this.db.object('products/' + row.key).update(row.data);
-    console.log(row);
   }
-  
+
   /**
    * @param {string} key - az törölni kívánt student kulcsa.
    */
@@ -113,14 +118,12 @@ constructor(
     // Erre hívom meg a remove metódust.
     this.db.object('products/' + key).remove();
   }
-  
+
   /**
    * Új adat felvitele a távoli adatbázisba.
    * @param record - az új adatokat tartalmazó objektum.
    */
   dataAdd(record: any) {
-    // A student listát lekérem és bele-pusholom az új rekordot.
-    // Ha sikeres választ kaptam a szerverről, kiürítéem az új rekordok objektumát.
     record.picture = this.filePath;
     this.db.list('products').push(record).then(
       r => this.newRow = {}
@@ -130,16 +133,13 @@ constructor(
 
   changeLog(file) {
     this.filePath = file.value.substring(12);
-    
   }
-  
+
   openModal(row){
     //open modal using jQuery
     this.modalArray = [];
     this.modalArray.push(row.data);
     jQuery(this.myModal.nativeElement).modal('show');
-    
-    console.log(row, this.modalArray);
   }
 
   randomAdd() {
@@ -148,9 +148,10 @@ constructor(
       "itemCode": `${Math.floor((Math.random() * 1000000) + 1)}`,
       "price": `${Math.floor((Math.random() * 10000) + 1)}`,
       "stock": `${Math.floor((Math.random() * 100) + 1)}`,
-      "picture": ''
+      "picture": 'default.jpg',
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
     this.dataAdd(this.randomRow);
   }
-  
+
 }

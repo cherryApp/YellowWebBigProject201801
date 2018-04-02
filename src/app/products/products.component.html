@@ -19,15 +19,15 @@
   <div class="col-12">
     <table class="table table-striped">
       <thead>
-        <tr>
-          <th class="sort-th" *ngFor="let key of keys" (click)="sortingService.sortIt(key, this.tableData, this.sorts)">
+        <tr class="text-center">
+          <th class="sort-th {{key}}" *ngFor="let key of keys, let i = index" (click)="sortingService.sortIt(key, this.tableData, this.sorts)">
             <span class="sort-sign" [class.show]="sorts[key] == 'down'">
               <i class="fas fa-sort-down"></i>
             </span>
             <span class="sort-sign" [class.show]="sorts[key] == 'up'">
               <i class="fas fa-sort-up"></i>
             </span>
-            {{ key }}
+            {{ keysAlias[i] }}
           </th>
           <th></th>
         </tr>
@@ -60,9 +60,9 @@
           </td>
           <td>
             <div class="btn-group">
-              <button (click)="dataUpdate(row)" class="btn btn-primary col-4">Update</button>
-              <button (click)="dataDelete(row.key)" class="btn btn-danger col-4">Delete</button>
-              <button (click)="openModal(row)" class="btn btn-info col-4">Preview</button>
+              <button (click)="openModal(row)" class="btn btn-primary col-6">Preview</button>
+              <button (click)="dataUpdate(row)" class="btn btn-secondary col-6">Update</button>
+              <button (click)="dataDelete(row.key)" class="btn btn-danger btn-sm col-2">X</button>
             </div>
           </td>
         </tr>
@@ -75,7 +75,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Product Preview</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -87,11 +87,11 @@
         <div>
           <h3>{{modalArray[0].productName}}</h3>
           <h2>$ {{modalArray[0].price}}</h2>
+          <p>{{modalArray[0].details}}</p>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
