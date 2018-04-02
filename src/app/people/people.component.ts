@@ -16,6 +16,10 @@ export class PeopleComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = ['id', 'firstName', 'lastName', 'city', 'email', 'drivingLicenceNumber', 'money', 'status'];
+  newHuman: any = {
+    id: 'ID', firstName: 'Firstname', lastName: 'Lastname', city: 'City', email: 'Email',
+    drivingLicenceNumber: 'Driving Licence NO.', money: 'Money', status: 'Status'
+  }
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
@@ -62,6 +66,10 @@ export class PeopleComponent implements OnInit {
     this.tableData.sort((a, b) => {
       return a.adat[key].toString().localeCompare(b.adat[key].toString()) * this.order;
     });
+  }
+
+  getHuman(key): void {
+    return this.newHuman[key];
   }
 
   /**

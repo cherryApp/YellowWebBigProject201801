@@ -6,7 +6,7 @@
           <thead>
             <tr>
               <th *ngFor="let key of keys" (click)="sortTable(key)" class="sortKey">
-                {{ key }}
+                {{ getHuman(key) }}
               </th>
             </tr>
           </thead>
@@ -29,7 +29,7 @@
                 <div class="btn-group">
                   <button (click)="dataUpdate(row)" class="btn btn-primary">Update</button>
                   <button (click)="dataDelete(row.key)" class="btn btn-danger">Delete</button>
-                  <button (click)="creditUpload(row.key)" class="btn btn-success">Reload credit card</button>
+                  <button (click)="creditUpload(row.key)" class="btn btn-success">Credit &#10138;</button>
                 </div>
               </td>
             </tr>
