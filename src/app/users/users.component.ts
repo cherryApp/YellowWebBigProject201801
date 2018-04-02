@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
-    "Id",
+    "ID",
     "Név",
     "Email",
     "Város"

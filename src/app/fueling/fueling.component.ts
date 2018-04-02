@@ -17,21 +17,21 @@ export class FuelingComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
+    "Sofőr(ID)",
+    "Rendszám",
     "Összeg(Ft)",
     "Üzemanyag(l)",
     "Időpont",
-    "Megtett út(km)",
-    "Sofőr(id)",
-    "Jármű (rendszám)"
+    "Megtett út(km)"
   ];
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
   currentData: any;
-  
+
 
   constructor(private db: AngularFireDatabase) {
-    
+
     for (let k of this.keys) {
       this.sorts[k] = {};
     }

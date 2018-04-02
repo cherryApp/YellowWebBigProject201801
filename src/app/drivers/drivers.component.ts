@@ -16,23 +16,23 @@ export class DriversComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
+    "ID",
     "Név",
-    "email",
+    "Email",
     "Kor",
     "Lakhely",
-    "ID"
   ];
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
   currentData: any;
-  
+
 
   constructor(private db: AngularFireDatabase) {
     for (let k of this.keys) {
       this.sorts[k] = {};
     }
-    
+
     this.itemRef = db.object('drivers');
 
     this.itemRef.valueChanges().subscribe(values => {
