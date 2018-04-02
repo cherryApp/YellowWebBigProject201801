@@ -26,6 +26,7 @@ export class CustomersComponent implements OnInit {
   keys: Array<string> = [
     "customerId",
     "customerName",
+    "customerEmail",
     "age",
     "address"
   ];
@@ -33,10 +34,8 @@ export class CustomersComponent implements OnInit {
   placesRand: Array<string> = this.places1.placesArray;
   namesRand: Array<string> = this.places1.namesArray;
   lastNamesRand: Array<string> = this.places1.lastNamesArray;
-  lastKey: string = "";
   sorts: any = {};
-  order: number = 1;
-  currentData: any;
+  emails: Array<string> = ["gmail.com", "yahoo.com", "aol.com", "outlook.com", "icloud.com"];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -113,12 +112,19 @@ export class CustomersComponent implements OnInit {
    * generate a random customer
    */
   randomAdd() {
+    let firstName = this.namesRand[Math.floor((Math.random() * this.namesRand.length - 1) + 1)];
     this.randomRow = {
       "customerId": `${Math.floor((Math.random() * 10000) + 1)}`,
-      "customerName": `${this.namesRand[Math.floor((Math.random() * this.namesRand.length - 1) + 1)]} ${this.lastNamesRand[Math.floor((Math.random() * this.lastNamesRand.length - 1) + 1)]}`,
+      "customerName": `${firstName} ${this.lastNamesRand[Math.floor((Math.random() * this.lastNamesRand.length - 1) + 1)]}`,
+      "customerEmail": `${firstName}${Math.floor((Math.random() * 1000) + 1)}${this.emails[(Math.floor(Math.random() * this.emails.length))]}`,
       "age": `${Math.floor((Math.random() * 100) + 1)}`,
       "address": `${this.placesRand[Math.floor((Math.random() * this.placesRand.length - 1) + 1)]}`
     }
     this.dataAdd(this.randomRow);
+  }
+
+  customerBio(row) {
+    console.log(row.data);
+    console.log(this.db.object('customers/' + row.customerName));
   }
 }
