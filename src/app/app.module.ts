@@ -30,7 +30,7 @@ const routes: Routes = [
     ProductsComponent,
     NavBarComponent,
     CustomersComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     FormsModule,
