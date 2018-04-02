@@ -1,3 +1,51 @@
-<p>
-  cars works!
-</p>
+<br>
+<div class="container">
+  <table class="table table-striped text-center table-bordered" id="table">
+    <thead>
+      <th class="thElements" *ngFor="let key of keys" (click)="sort(key)">
+        {{ key }}
+      </th>
+      <th class="thElements">Methods</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input [(ngModel)]="newRow.id" type="text" class="form-control">
+        </td>
+        <td>
+          <input [(ngModel)]="newRow.type" type="text" class="form-control">
+        </td>
+        <td>
+          <input [(ngModel)]="newRow.actfuel" type="text" class="form-control">
+        </td>
+        <td>
+          <input [(ngModel)]="newRow.avgConsumption" type="text" class="form-control">
+        </td>
+        <td>
+          <input [(ngModel)]="newRow.tank" type="text" class="form-control">
+        </td>
+        <td>
+          <input [(ngModel)]="newRow.motorType" type="radio" class="radio" name="motorType" value="benzin">Benzin
+          <br>
+          <input [(ngModel)]="newRow.motorType" type="radio" class="radio" name="motorType" value="diesel">Diesel
+        </td>
+        <td>
+          <div class="btn-group">
+            <button class="btn btn-success" (click)="dataAdd(newRow)">Add Car</button>
+          </div>
+        </td>
+        <tr *ngFor="let row of tableData">
+          <td *ngFor="let key of keys">
+            {{row.data[key]}}
+          </td>
+          <td>
+            <div class="btn-group">
+              <button (click)="dataDelete(row.key)" class="btn btn-danger">Delete</button>
+            </div>
+          </td>
+
+        </tr>
+
+    </tbody>
+  </table>
+</div>

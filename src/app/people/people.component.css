@@ -1,0 +1,7 @@
+thead:hover {
+  cursor: pointer;
+}
+
+thead {
+  text-align: center;
+}
