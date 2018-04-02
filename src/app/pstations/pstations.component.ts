@@ -10,23 +10,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class PstationsComponent implements OnInit {
 
-  user: any; //?
-  itemRef: AngularFireObject<any>; //?
-  item: Observable<any>; //?
+
+  itemRef: AngularFireObject<any>;
+  item: Observable<any>;
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = ['Id', 'Company', 'Location', 'Diesel (HUF)', 'Petrol (HUF)'];
-  petrolstationUrls: any = {
-    mol: 'https://pbs.twimg.com/profile_images/378800000474004977/cf7c3082d7151bad59c596ac0def6604.png',
-    omv: 'https://crunchbase-production-res.cloudinary.com/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1446785794/xzqjiv2ze4u1x23gxts7.png',
-    shell: 'https://pbs.twimg.com/profile_images/580803697304702976/h-QZArRy_400x400.png',
-    lukoil: 'https://pbs.twimg.com/profile_images/3717020741/bd978ab46fc1a1b9bb73c62520e6e4f0.jpeg',
-    avia: 'https://cdn6.aptoide.com/imgs/0/8/3/083e85e69a5dc249af0f5aa330f9ec05_icon.png?w=256'
-  };
   lastKey: string = "";
-  sorts: any = {}; //?
+  sorts: any = {};
   order: number = 1;
-  currentData: any; //?
+  data: any;
+  select: Array<any> = ['location', 'company', 'dieselPrice', 'petrolPrice'];
+  searchInput: string;
 
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
@@ -93,6 +88,39 @@ export class PstationsComponent implements OnInit {
     this.db.list('uzemanyag/pstations').push(record).then(
       r => this.newRow = {}
     );
+  }
+  search() {
+    let input, filter, table, tr, td, i;
+    input = document.getElementById('search');
+    filter = input.value.toLowerCase();
+    table = document.getElementsByTagName('table');
+    tr = table.getElementsByTagNames('tr');
+
+
+
+
+    switch (this.select) {
+      case this.select[0]:
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagNames[2];
+          if (td) {
+            if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+        break;
+      case this.select[1]:
+        break;
+      case this.select[2]:
+        break;
+      case this.select[3]:
+        break;
+
+
+    }
   }
 
 
