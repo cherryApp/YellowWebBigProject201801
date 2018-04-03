@@ -17,17 +17,17 @@
 
 <div class="row" *ngIf="user">
   <div class="col-12">
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
       <thead>
-        <tr>
-          <th class="sort-th" *ngFor="let key of keys" (click)="sortingService.sortIt(key, this.tableData, this.sorts)">
+        <tr class="text-center">
+          <th class="sort-th {{key}}" *ngFor="let key of keys, let i = index" (click)="sortingService.sortIt(key, this.tableData, this.sorts)">
             <span class="sort-sign" [class.show]="sorts[key] == 'down'">
               <i class="fas fa-sort-down"></i>
             </span>
             <span class="sort-sign" [class.show]="sorts[key] == 'up'">
               <i class="fas fa-sort-up"></i>
             </span>
-            {{ key }}
+            {{ keysAlias[i] }}
           </th>
           <th></th>
         </tr>
@@ -35,7 +35,12 @@
       <tbody>
         <tr>
           <td *ngFor="let key of keys">
-            <input class="form-control addNew" type="text" [(ngModel)]="newRow[key]">
+            <div *ngIf="key != 'picture'">
+              <input class="form-control addNew" type="text" [(ngModel)]="newRow[key]">
+            </div>
+            <div *ngIf="key == 'picture'">
+              <input #newFile (change)="changeLog(newFile)" class="form-control addNew" type="file">
+            </div>
           </td>
           <td>
             <div class="btn-group">
@@ -46,16 +51,49 @@
         </tr>
         <tr *ngFor="let row of tableData">
           <td *ngFor="let key of keys">
-            <input [(ngModel)]="row.data[key]" class="form-control tableinput" type="text">
+            <div class="input-group">
+              <div *ngIf="key == 'price'" class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input [(ngModel)]="row.data[key]" class="form-control tableinput" type="text">
+            </div>
           </td>
           <td>
             <div class="btn-group">
-              <button (click)="dataUpdate(row)" class="btn btn-primary col-6">Update</button>
-              <button (click)="dataDelete(row.key)" class="btn btn-danger col-6">Delete</button>
+              <button (click)="openModal(row)" class="btn btn-primary col-6">Preview</button>
+              <button (click)="dataUpdate(row)" class="btn btn-secondary col-6">Update</button>
+              <button (click)="dataDelete(row.key)" class="btn btn-danger btn-sm col-2">X</button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+<!-- MODAL -->
+<div #myModal class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Product Preview</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <img src="../../assets/product-pictures/{{modalArray[0].picture}}" alt="product-picture">
+        </div>
+        <div>
+          <h3>{{modalArray[0].productName}}</h3>
+          <h2 *ngIf= "modalArray[0].stock > 0" >$ {{modalArray[0].price}}</h2>
+          <h2 *ngIf= "modalArray[0].stock == 0" class="text-muted">Out of Stock</h2>
+          <p>{{modalArray[0].details}}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

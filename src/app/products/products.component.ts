@@ -1,11 +1,13 @@
-import { Component, OnInit, TrackByFunction } from '@angular/core';
+import { Component, OnInit, TrackByFunction, ElementRef } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { isNumber } from 'util';
 import { SortingService } from '../sorting.service';
+import { ViewChild } from '@angular/core';
 
+declare var jQuery:any;
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -13,6 +15,8 @@ import { SortingService } from '../sorting.service';
   providers: []
 })
 export class ProductsComponent implements OnInit {
+  @ViewChild('myModal') myModal:ElementRef;
+
   loginData: { email: string, pass: string } = {
     email: "",
     pass: ""
@@ -20,23 +24,37 @@ export class ProductsComponent implements OnInit {
   user: any;
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
+  modalArray: Array<any> = [{picture: 'default.jpg'}];
   tableData: Array<any> = [];
   newRow: any = {};
+  currentRow: any = {
+    picture: 'default.jpg'
+  };
+  filePath: string = "default.jpg";
+  keysAlias: Array<string> = [
+    "Product Name",
+    "Product Code",
+    "Price",
+    "Stock (pcs)",
+    "Picture Filename",
+    "Details"
+  ];
   keys: Array<string> = [
     "productName",
     "itemCode",
     "price",
-    "stock"
+    "stock",
+    "picture",
+    "details"
   ];
   randomProductNames: Array<string> = ["Fender Stratocaster", "Fender Telecaster", "Fender Jaguar", "Fender Mustang", "Jackson Dinky", "Jackson Soloist", "Jackson Warrior", "Jackson Kelly", "Jackson King V", "Gibson Les Paul", "Gibson SG", "Gibson Flying V", "Gibson Explorer", "Gibson Firebird", "Friedman Dirty Shirley", "Friedman Brown Eye", "Peavey 5150", "Peavey 6606", "Marshall JCM 800", "Marshall JCM 900", "Marshall JCM 2000", "Marshall JMP-1", "Orange Micro Terror", "Orange Dual Terror", "Orange Tiny Terror", "Blackstar Artist Series", "Blackstar Artisan Series", "Blackstar Venue Series",
-  ];
-  randomItemCode: Array<string> = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "N", "X", "Y", "Z"];
-  randomRow: any = {};
+];
+randomRow: any = {};
 
-  sorts: any = {};
-  currentData: any;
+sorts: any = {};
+currentData: any;
 
-  constructor(
+constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
     public sortingService: SortingService
@@ -44,7 +62,6 @@ export class ProductsComponent implements OnInit {
     for (let k of this.keys) {
       this.sorts[k] = {};
     }
-
     this.itemRef = db.object('products');
 
     this.itemRef.valueChanges().subscribe(
@@ -58,9 +75,8 @@ export class ProductsComponent implements OnInit {
           });
         }
       }
-    )
+    );
   }
-
 
   ngOnInit() {
     this.afAuth.authState.subscribe(
@@ -97,7 +113,7 @@ export class ProductsComponent implements OnInit {
 
   /**
    * @param {string} key - az törölni kívánt student kulcsa.
-  */
+   */
   dataDelete(key: string): void {
     // Rámutatok a távoli adatbázisban az adott kulcsú student-re.
     // Erre hívom meg a remove metódust.
@@ -109,23 +125,32 @@ export class ProductsComponent implements OnInit {
    * @param record - az új adatokat tartalmazó objektum.
    */
   dataAdd(record: any) {
-    // A studnet listát lekérem és bele-pusholom az új rekordot.
-    // Ha sikeres választ kaptam a szerverről, kiürítéem az új rekordok objektumát.
+    record.picture = this.filePath;
     this.db.list('products').push(record).then(
       r => this.newRow = {}
     );
+    this.filePath = 'default.jpg';
+  }
+
+  changeLog(file) {
+    this.filePath = file.value.substring(12);
+  }
+
+  openModal(row){
+    //open modal using jQuery
+    this.modalArray = [];
+    this.modalArray.push(row.data);
+    jQuery(this.myModal.nativeElement).modal('show');
   }
 
   randomAdd() {
-    let generateRandomItemCode = "";
-    for (let i = 0; i < 4; i++) {
-      generateRandomItemCode += this.randomItemCode[Math.floor((Math.random() * this.randomItemCode.length - 1) + 1)];
-    }
     this.randomRow = {
       "productName": `${this.randomProductNames[Math.floor((Math.random() * this.randomProductNames.length - 1) + 1)]}`,
-      "itemCode": `${Math.floor((Math.random() * 10000) + 1)}${generateRandomItemCode}`,
-      "price": `${Math.floor((Math.random() * 10000) + 1)} $`,
-      "stock": `${Math.floor((Math.random() * 100) + 1)}`
+      "itemCode": `${Math.floor((Math.random() * 1000000) + 1)}`,
+      "price": `${Math.floor((Math.random() * 10000) + 1)}`,
+      "stock": `${Math.floor((Math.random() * 100) + 1)}`,
+      "picture": 'default.jpg',
+      "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
     this.dataAdd(this.randomRow);
   }

@@ -17,5 +17,19 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  runForestRun() {
+    document.getElementById('copcar').style.display = "block";
+    document.getElementById('copcar').style.animationName = "run2";
+    document.getElementById('mario').style.display = "block";
+    document.getElementById('mario').style.animationName = "run";
+    setInterval(function (
+    ) {
+      document.getElementById('copcar').style.animationName = "none";
+      document.getElementById('copcar').style.display = "none";
+      document.getElementById('mario').style.animationName = "none";
+      document.getElementById('mario').style.display = "none";
+    }, 6000)
+  }
 }
+
+
