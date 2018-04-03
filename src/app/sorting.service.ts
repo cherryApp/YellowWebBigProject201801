@@ -5,7 +5,7 @@ export class SortingService {
   lastKey: string = "";
   order: number = 1;
 
-  public sortIt(key:string, tableData:Array<any>, sorts) {
+  public sortIt(key: string, tableData: Array<any>, sorts) {
     for (var k in sorts) {
       sorts[k] = "";
     }
@@ -18,7 +18,7 @@ export class SortingService {
 
     this.lastKey = key;
     tableData = tableData.sort((a, b) => {
-      return Number.parseFloat(a.data[key]) ? (a.data[key]-b.data[key]) * this.order : (a.data[key].toString().localeCompare(b.data[key].toString()) * this.order);
+      return Number.parseFloat(a.data[key]) ? (a.data[key] - b.data[key]) * this.order : (a.data[key].toString().localeCompare(b.data[key].toString()) * this.order);
     });
     console.log(`Sorting table for column ${key} completed. State: ${sorts[key]}`);
   }

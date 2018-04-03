@@ -82,6 +82,7 @@ export class ProductsComponent implements OnInit {
       value => console.log(value),
       error => console.error(error)
     );
+
   }
 
   /**
