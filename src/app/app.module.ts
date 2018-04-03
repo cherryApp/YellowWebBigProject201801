@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { NavComponent } from './nav/nav.component';
@@ -16,6 +17,7 @@ import { AgentsComponent } from './agents/agents.component';
 import { EstatesComponent } from './estates/estates.component';
 import { CustomersComponent } from './customers/customers.component';
 import { DataImportService } from './data-import.service';
+import { AuthService } from './auth.service';
 
 
 const appRoutes: Routes = [
@@ -24,7 +26,7 @@ const appRoutes: Routes = [
   { component: AgentsComponent, path: 'agents' },
   { component: EstatesComponent, path: 'estates' },
   { component: CustomersComponent, path: 'customers' },
-  
+
 ];
 
 @NgModule({
@@ -40,11 +42,13 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
     AngularFireAuth,
     AngularFireDatabase,
+    AuthService,
     DataImportService
   ],
   bootstrap: [AppComponent]
