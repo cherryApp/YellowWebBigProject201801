@@ -11,9 +11,9 @@ describe('FuelingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FuelingComponent ]
+      declarations: [FuelingComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
