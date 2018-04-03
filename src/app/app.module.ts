@@ -31,7 +31,8 @@ const routes: Routes = [
     LoginComponent,
     ProductsComponent,
     NavBarComponent,
-    CustomersComponent
+    CustomersComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
