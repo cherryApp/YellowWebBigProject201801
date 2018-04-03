@@ -58,7 +58,7 @@ export class CustomersComponent implements OnInit {
   dataDelete(key: string): void {
     this.db.object('landlord/' + key).remove();
   }
-  
+
   sort(key): void {
     for (var k in this.sorts) {
       this.sorts[k] = "";
@@ -71,7 +71,7 @@ export class CustomersComponent implements OnInit {
     this.sorts[key] = this.order == -1 ? 'up' : 'down';
 
     this.lastKey = key;
-    this.data.sort((a, b) => {
+    this.landlordData.sort((a, b) => {
       return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
     });
   }
