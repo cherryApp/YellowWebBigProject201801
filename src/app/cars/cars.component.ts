@@ -12,8 +12,10 @@ import { Observable } from 'rxjs/Observable';
 })
 export class CarsComponent implements OnInit {
   itemRef: AngularFireObject<any>;
+  tripsRef: AngularFireObject<any>;
   item: Observable<any>;
   tableData: Array<any> = [];
+  tableData2: Array<any> = [];
   newRow: any = {};
 
   keys: Array<string> = [
@@ -22,7 +24,8 @@ export class CarsComponent implements OnInit {
     "actfuel",
     "avgConsumption",
     "tank",
-    "motorType"
+    "motorType",
+    "distanceTaken"
   ];
   lastKey: string = "";
   sorts: any = {};
@@ -49,6 +52,24 @@ export class CarsComponent implements OnInit {
         }
       }
     )
+    this.tripsRef = db.object('uzemanyag/trips');
+
+    this.tripsRef.valueChanges().subscribe(
+      values => {
+        this.tableData2 = [];
+        for (let k in values) {
+          console.log(values[k]);
+          this.tableData2.push({
+            key: k,
+            data: values[k]
+
+          });
+        }
+        console.log(this.tableData2, this.tripsRef);
+
+      }
+    )
+
   }
 
   ngOnInit() {
@@ -86,6 +107,11 @@ export class CarsComponent implements OnInit {
       r => this.newRow = {}
     );
     this.idCounter++;
+  }
+  datas(id) {
+
+    let trips = this.tableData2.filter(item => item.data.carId == id ? true : false);
+    console.log(trips);
   }
 
 }
