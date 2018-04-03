@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="user">
   <table class="table table-stripped table-hover table-sm">
     <thead class="thead-light">
       <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
@@ -45,6 +45,8 @@
   </table>
 
 </div>
+<!--
 <pre>
     {{  landlordData | json }}
     </pre>
+-->

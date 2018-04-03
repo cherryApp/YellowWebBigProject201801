@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  user: {email: string} = {
-    email:" "};
+  user: { email: string } = {
+    email: ' '
+  };
   constructor() { }
 
   ngOnInit() {

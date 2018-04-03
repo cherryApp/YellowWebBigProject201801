@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataImportService } from '../data-import.service';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-customers',
@@ -8,6 +11,11 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
+  loginData: { email: string, pass: string } = {
+    email: '',
+    pass: ''
+  };
+  user: any;
   landlordRef: AngularFireObject<any>;
   landlordData: Array<any> = [];
   newRow: any = {};
@@ -23,6 +31,7 @@ export class CustomersComponent implements OnInit {
   currentData: any;
 
   constructor(
+    private afAuth: AngularFireAuth,
     private db: AngularFireDatabase
   ) {
     this.landlordRef = db.object('landlord');
@@ -41,6 +50,20 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.afAuth.authState.subscribe(
+      user => this.user = user,
+      error => console.error(error)
+    );
+  }
+
+  login(): void {
+    this.afAuth.auth.signInWithEmailAndPassword(
+      this.loginData.email,
+      this.loginData.pass
+    ).then(
+      value => console.log(value),
+      error => console.error(error)
+    );
   }
 
   dataAdd(record: any) {

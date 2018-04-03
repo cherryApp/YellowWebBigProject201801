@@ -1,32 +1,30 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Admin - Real***Estate </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">Admin - Real***Estate </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/offices">Offices
-            </a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/agents">Agents</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/estates">Estates</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link"routerLink="/customers">Customers</a>
-          </li>
-        </ul>
-        <p class="justify-content-end">
-            {{user.email}}
-          </p>
-      </div>
-    </nav>
-  </div>
-
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/offices">Offices
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/agents">Agents</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/estates">Estates</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/customers">Customers</a>
+        </li>
+      </ul>
+      <p class="justify-content-end">
+        {{user.email}}
+      </p>
+    </div>
+  </nav>
+</div>
