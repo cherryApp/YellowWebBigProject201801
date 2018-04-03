@@ -28,10 +28,10 @@ import {
             [
               style({
                 opacity: 0,
-                transform: 'translateY(9rem) rotate(-10deg)'
+                transform: 'translateY(9rem) rotate(-30deg)'
               }),
               animate(
-                '0.35s cubic-bezier(0, 1.8, 1, 1.8)',
+                '1.85s cubic-bezier(0, 5, 1, 3)',
                 style({ opacity: 1, transform: 'translateY(0) rotate(0)' })
               ),
               animateChild()
