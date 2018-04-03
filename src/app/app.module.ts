@@ -18,15 +18,15 @@ import { EstatesComponent } from './estates/estates.component';
 import { CustomersComponent } from './customers/customers.component';
 import { DataImportService } from './data-import.service';
 import { AuthService } from './auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
   { path: '', component: OfficeComponent, pathMatch: 'full' },
-  { component: OfficeComponent, path: 'offices' },
-  { component: AgentsComponent, path: 'agents' },
-  { component: EstatesComponent, path: 'estates' },
-  { component: CustomersComponent, path: 'customers' },
-
+  { component: OfficeComponent, path: 'offices', data: { page: 'offices' } },
+  { component: AgentsComponent, path: 'agents', data: { page: 'agents' } },
+  { component: EstatesComponent, path: 'estates', data: { page: 'estates' } },
+  { component: CustomersComponent, path: 'customers', data: { page: 'customers' } },
 ];
 
 @NgModule({
@@ -43,8 +43,10 @@ const appRoutes: Routes = [
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule
   ],
+  exports: [RouterModule],
   providers: [
     AngularFireAuth,
     AngularFireDatabase,

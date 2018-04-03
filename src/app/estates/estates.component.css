@@ -7,3 +7,10 @@
   background: rgba(65, 182, 221, 0.192);
   box-shadow: inset 0 0 40px 20px white;
 }
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}

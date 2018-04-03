@@ -3,7 +3,7 @@
 </section>
 
 <div class="container">
-  <div class="col-6 offset-3">
+  <div class="col">
     <h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
     <div *ngIf="!(authService.user | async)">
       <input type="text" [(ngModel)]="email" placeholder="email">
@@ -22,12 +22,13 @@
       Logout
     </button>
   </div>
+</div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-10 offset-2">
-        <br>
-        <router-outlet></router-outlet>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col main" [@animRoutes]="getPage(appOutlet)">
+      <br>
+      <router-outlet #appOutlet="outlet"></router-outlet>
     </div>
   </div>
+</div>
