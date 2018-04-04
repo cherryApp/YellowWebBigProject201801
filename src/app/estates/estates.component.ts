@@ -132,8 +132,14 @@ export class EstatesComponent implements OnInit {
   }
 
   modalData(row) {
-    console.log(row);
-    this.actualRow = row;
+    console.log(row.data.price);
+    this.actualRow = row.data;
+    const margin = parseFloat(this.actualRow.margin);
+    const price = parseFloat(this.actualRow.price);
+    const area = parseFloat(this.actualRow.area);
+    this.actualRow.netIncome = price * margin / 100;
+    this.actualRow.grossIncome = (this.actualRow.netIncome * 1.27).toFixed();
+    this.actualRow.specificPrice = (price / area).toFixed();
   }
 
 
