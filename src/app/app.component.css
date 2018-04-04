@@ -20,3 +20,7 @@ footer {
   line-height: 10px;
   background-color: #e3f2fd;
 }
+
+.alli-yellow {
+  border-color: rgba(249, 236, 31, 1);
+}

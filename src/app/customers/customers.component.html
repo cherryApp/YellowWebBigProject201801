@@ -1,6 +1,6 @@
 <div class="container" *ngIf="user">
-  <table class="table table-stripped table-hover table-sm">
-    <thead class="thead-light">
+  <table class="table table-stripped table-sm">
+    <thead class="colored-thead">
       <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
         <span [class.show]="sorts[key] == 'down'">
           <i class="fas fa-sort-down"></i>
@@ -18,7 +18,7 @@
           <input [(ngModel)]="newRow[key]" type="text" class="form-control">
         </td>
         <td>
-          <button (click)="dataAdd(newRow)" class="btn btn-outline-danger">add</button>
+          <button (click)="dataAdd(newRow)" class="btn btn-outline-success alli-yellow">add</button>
         </td>
       </tr>
       <!-- bejárom a data tömböt, ami a landlordok sorait tartalmazza -->
@@ -33,11 +33,11 @@
           <div class="btn-group">
             <!-- Módosítás: kattintás hatására meghívom a dataUpdate metódust és
                 átadom neki az adott adat-sort. -->
-            <button (click)="dataUpdate(row)" class="btn btn-outline-primary">update</button>
+            <button (click)="dataUpdate(row)" class="btn btn-outline-success alli-yellow">update</button>
             <!-- Törlés: kattintás hatására meghívom a dataDelete metódust és
                 átadom neki az adott adat-sorban található kulcsot, azaz a student
                 adatbázis kulcsát. -->
-            <button (click)="dataDelete(row.key)" class="btn btn-outline-danger">delete</button>
+            <button (click)="dataDelete(row.key)" class="btn btn-outline-success">delete</button>
           </div>
         </td>
       </tr>

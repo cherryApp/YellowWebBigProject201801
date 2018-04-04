@@ -3,13 +3,6 @@
   text-align: center;
 }
 
-.sort-th:hover {
-  background: rgba(65, 182, 221, 0.192);
-  box-shadow: inset 0 0 40px 20px white;
-}
-
-/* táblázat vízszintes kereteinek eltüntetése */
-
 th,
 td {
   border: none;
@@ -20,4 +13,16 @@ td {
   justify-content: center;
   align-items: center;
   position: absolute;
+}
+
+.colored-thead {
+  background: rgba(249, 236, 31, 0.7);
+}
+
+.sort-th:hover {
+  background-color: rgba(43, 154, 46, 0.7);
+}
+
+.alli-yellow {
+  border-color: rgba(249, 236, 31, 1);
 }

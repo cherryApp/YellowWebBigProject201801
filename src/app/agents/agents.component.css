@@ -3,6 +3,10 @@ td {
   border: none;
 }
 
+.colored-thead {
+  background: rgba(249, 236, 31, 0.7);
+}
+
 .sort-th span {
   display: none;
 }
@@ -16,7 +20,7 @@ td {
 }
 
 .sort-th:hover {
-  background-color: whitesmoke;
+  background-color: rgba(43, 154, 46, 0.7);
 }
 
 :host {
@@ -24,4 +28,8 @@ td {
   justify-content: center;
   align-items: center;
   position: absolute;
+}
+
+.alli-yellow {
+  border-color: rgba(249, 236, 31, 1);
 }

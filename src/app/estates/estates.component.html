@@ -2,7 +2,7 @@
 
 
   <table class="table table-sm">
-    <thead>
+    <thead class="colored-thead">
       <tr>
         <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
           {{ key }}
@@ -27,7 +27,7 @@
         <td>
           <div class="btn-group">
             <!-- Kattintásra átadom az új rekord adatait a dataAdd metódusnak. -->
-            <button (click)="dataAdd(newRow)" class="btn btn-outline-danger">add</button>
+            <button (click)="dataAdd(newRow)" class="btn btn-outline-success alli-yellow">add</button>
           </div>
         </td>
 
@@ -46,9 +46,9 @@
           <div class="btn-group">
             <!-- Módosítás: kattintás hatására meghívom a dataUpdate metódust és
               átadom neki az adott adat-sort. -->
-            <button (click)="dataUpdate(row)" class="btn btn-outline-success">update</button>
+            <button (click)="dataUpdate(row)" class="btn btn-outline-success alli-yellow">update</button>
             <!-- gombnyomásra kiynilik az aktuális sor modalban -->
-            <button (click)="modalData(row)" type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#ModalCenter">
+            <button (click)="modalData(row)" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#ModalCenter">
               More </button>
           </div>
         </td>
@@ -61,7 +61,7 @@
 <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background: linear-gradient(to right, rgba(249,236,31,1), rgba(43,154,46,1));">
         <h5 class="modal-title" id="ModalLongTitle">{{actualRow.address}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -111,11 +111,11 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-success alli-yellow" data-dismiss="modal">Close</button>
         <!-- Törlés: kattintás hatására meghívom a dataDelete metódust és
               átadom neki az adott adat-sorban található kulcsot, azaz a student
               adatbázis kulcsát. -->
-        <button (click)="dataDelete(actualRow.key)" data-dismiss="modal" class="btn btn-outline-danger">Delete estate</button>
+        <button (click)="dataDelete(actualRow.key)" data-dismiss="modal" class="btn btn-outline-success">Delete estate</button>
       </div>
     </div>
   </div>
