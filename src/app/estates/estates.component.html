@@ -30,6 +30,7 @@
             <button (click)="dataAdd(newRow)" class="btn btn-danger">add</button>
           </div>
         </td>
+
       </tr>
       <!-- Az ngFor direktíva bejárja a tableData tömböt. -->
       <tr *ngFor="let row of tableData">
@@ -45,14 +46,77 @@
           <div class="btn-group">
             <!-- Módosítás: kattintás hatására meghívom a dataUpdate metódust és
               átadom neki az adott adat-sort. -->
-            <button (click)="dataUpdate(row)" class="btn btn-primary">update</button>
-            <!-- Törlés: kattintás hatására meghívom a dataDelete metódust és
-              átadom neki az adott adat-sorban található kulcsot, azaz a student
-              adatbázis kulcsát. -->
-            <button (click)="dataDelete(row.key)" class="btn btn-danger">delete</button>
+            <button (click)="dataUpdate(row)" class="btn btn-success">update</button>
+            <!-- gombnyomásra kiynilik az aktuális sor modalban -->
+            <button (click)="modalData(row)" type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalCenter">
+              More </button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLongTitle">{{actualRow.address}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-stripes">
+          <tbody>
+            <tr>
+              <td>Identification</td>
+              <td>
+                {{actualRow.id}}
+              </td>
+            </tr>
+            <tr>
+              <td>Price</td>
+              <td>
+                {{actualRow.price/1e6}}M Ft
+              </td>
+            </tr>
+            <tr>
+              <td>Price per m&#178;
+              </td>
+              <td>
+                {{actualRow.specificPrice}} Ft
+              </td>
+            </tr>
+            <tr>
+              <td>Margin</td>
+              <td>
+                {{actualRow.margin}}%
+              </td>
+            </tr>
+            <tr *ngIf="actualRow.status=='sold'">
+              <td>Gross income</td>
+              <td>
+                {{actualRow.grossIncome}}Ft
+              </td>
+            </tr>
+            <tr *ngIf="actualRow.status!='sold'">
+              <td>Expected gross income</td>
+              <td>
+                {{actualRow.grossIncome}}Ft
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- Törlés: kattintás hatására meghívom a dataDelete metódust és
+              átadom neki az adott adat-sorban található kulcsot, azaz a student
+              adatbázis kulcsát. -->
+        <button (click)="dataDelete(actualRow.key)" data-dismiss="modal" class="btn btn-danger">Delete estate</button>
+      </div>
+    </div>
+  </div>
 </div>

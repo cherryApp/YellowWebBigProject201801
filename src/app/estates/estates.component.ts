@@ -32,6 +32,7 @@ export class EstatesComponent implements OnInit {
   sorts: any = {};
   order: number = 1;
   currentData: any;
+  actualRow: any = {};
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -129,5 +130,18 @@ export class EstatesComponent implements OnInit {
       r => this.newRow = {}
     );
   }
+
+  modalData(row) {
+    //console.log(row.data.price);
+    this.actualRow = row.data;
+    this.actualRow.key = row.key;
+    const margin = parseFloat(this.actualRow.margin);
+    const price = parseFloat(this.actualRow.price);
+    const area = parseFloat(this.actualRow.area);
+    this.actualRow.netIncome = price * margin / 100;
+    this.actualRow.grossIncome = (this.actualRow.netIncome * 1.27).toFixed();
+    this.actualRow.specificPrice = (price / area).toFixed();
+  }
+
 
 }
