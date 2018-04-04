@@ -132,8 +132,9 @@ export class EstatesComponent implements OnInit {
   }
 
   modalData(row) {
-    console.log(row.data.price);
+    //console.log(row.data.price);
     this.actualRow = row.data;
+    this.actualRow.key = row.key;
     const margin = parseFloat(this.actualRow.margin);
     const price = parseFloat(this.actualRow.price);
     const area = parseFloat(this.actualRow.area);
