@@ -1,6 +1,6 @@
 section.nav-black,
 footer {
-  background-color: #e3f2fd;
+  background: linear-gradient(to right, rgba(249, 236, 31, 1), rgba(43, 154, 46, 1));
 }
 
 .main {

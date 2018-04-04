@@ -1,3 +1,8 @@
+th,
+td {
+  border: none;
+}
+
 .sort-th span {
   display: none;
 }

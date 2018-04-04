@@ -1,5 +1,5 @@
 <div class="row" *ngIf="user">
-  <table class="table">
+  <table class="table table-sm">
     <thead>
       <tr>
         <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
@@ -25,7 +25,7 @@
         <td>
           <div class="btn-group">
             <!-- Kattintásra átadom az új rekord adatait a dataAdd metódusnak. -->
-            <button (click)="dataAdd(newRow)" class="btn btn-danger">add</button>
+            <button (click)="dataAdd(newRow)" class="btn btn-outline-danger">add</button>
           </div>
         </td>
       </tr>
@@ -43,11 +43,11 @@
           <div class="btn-group">
             <!-- Módosítás: kattintás hatására meghívom a dataUpdate metódust és
                 átadom neki az adott adat-sort. -->
-            <button (click)="dataUpdate(row)" class="btn btn-primary">update</button>
+            <button (click)="dataUpdate(row)" class="btn btn-outline-primary">update</button>
             <!-- Törlés: kattintás hatására meghívom a dataDelete metódust és
                 átadom neki az adott adat-sorban található kulcsot, azaz a student
                 adatbázis kulcsát. -->
-            <button (click)="dataDelete(row.key)" class="btn btn-danger">delete</button>
+            <button (click)="dataDelete(row.key)" class="btn btn-outline-danger">delete</button>
           </div>
         </td>
       </tr>
