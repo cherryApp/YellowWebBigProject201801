@@ -32,7 +32,7 @@ export class EstatesComponent implements OnInit {
   sorts: any = {};
   order: number = 1;
   currentData: any;
-  actualRow: any = {};  
+  actualRow: any = {};
 
   constructor(
     private afAuth: AngularFireAuth,

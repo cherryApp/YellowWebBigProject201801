@@ -1,0 +1,22 @@
+.sort-th span {
+  display: none;
+}
+
+.sort-th span.show {
+  display: inline;
+}
+
+.sort-th {
+  cursor: pointer;
+}
+
+.sort-th:hover {
+  background-color: whitesmoke;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}

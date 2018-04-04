@@ -1,3 +1,52 @@
+<div class="container" *ngIf="user">
+  <table class="table table-stripped table-hover table-sm">
+    <thead class="thead-light">
+      <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
+        <span [class.show]="sorts[key] == 'down'">
+          <i class="fas fa-sort-down"></i>
+        </span>
+        <span [class.show]="sorts[key] == 'up'">
+          <i class="fas fa-sort-up"></i>
+        </span>
+        {{ key }}
+      </th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let key of keys">
+          <input [(ngModel)]="newRow[key]" type="text" class="form-control">
+        </td>
+        <td>
+          <button (click)="dataAdd(newRow)" class="btn btn-danger">add</button>
+        </td>
+      </tr>
+      <!-- bejárom a data tömböt, ami a landlordok sorait tartalmazza -->
+      <tr *ngFor="let row of landlordData ">
+        <!-- A megjelenítéshez a kulcsok tömbjét járjuk be. -->
+        <td *ngFor="let key of keys">
+          <!-- a kulcsok definiálva a component.ts-ben ...-->
+          <input [(ngModel)]="row.data[key]" type="text" class="form-control">
+        </td>
+        <td>
+          <!-- A gombcsoport segítségével módosítom vagy törlöm az adatokat. -->
+          <div class="btn-group">
+            <!-- Módosítás: kattintás hatására meghívom a dataUpdate metódust és
+                átadom neki az adott adat-sort. -->
+            <button (click)="dataUpdate(row)" class="btn btn-primary">update</button>
+            <!-- Törlés: kattintás hatására meghívom a dataDelete metódust és
+                átadom neki az adott adat-sorban található kulcsot, azaz a student
+                adatbázis kulcsát. -->
+            <button (click)="dataDelete(row.key)" class="btn btn-danger">delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<!--
 <pre>
-{{  data | json }}
-</pre>
+    {{  landlordData | json }}
+    </pre>
+-->

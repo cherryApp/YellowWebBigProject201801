@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Observable';
+import { DataImportService } from '../data-import.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-customers',
@@ -11,13 +8,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-  loginData: { email: string, pass: string } = {
-    email: '',
-    pass: ''
-  };
-  user: any;
-  landlordRef: AngularFireObject<any>;
-  landlordData: Array<any> = [];
+  data: any;
   newRow: any = {};
   keys: Array<string> = [
     "landlordId",
@@ -31,39 +22,14 @@ export class CustomersComponent implements OnInit {
   currentData: any;
 
   constructor(
-    private afAuth: AngularFireAuth,
+    private importData: DataImportService,
     private db: AngularFireDatabase
   ) {
-    this.landlordRef = db.object('landlord');
-    this.landlordRef.valueChanges().subscribe(
-      values => {
-        this.landlordData = [];
-        for (var k in values) {
-          this.landlordData.push({
-            key: k,
-            data: values[k]
-          });
-        }
-      }
-    )
-
+    this.data = this.importData.landlordData;
+    console.log(this.data);
   }
 
   ngOnInit() {
-    this.afAuth.authState.subscribe(
-      user => this.user = user,
-      error => console.error(error)
-    );
-  }
-
-  login(): void {
-    this.afAuth.auth.signInWithEmailAndPassword(
-      this.loginData.email,
-      this.loginData.pass
-    ).then(
-      value => console.log(value),
-      error => console.error(error)
-    );
   }
 
   dataAdd(record: any) {
@@ -81,7 +47,7 @@ export class CustomersComponent implements OnInit {
   dataDelete(key: string): void {
     this.db.object('landlord/' + key).remove();
   }
-
+  
   sort(key): void {
     for (var k in this.sorts) {
       this.sorts[k] = "";
@@ -94,7 +60,7 @@ export class CustomersComponent implements OnInit {
     this.sorts[key] = this.order == -1 ? 'up' : 'down';
 
     this.lastKey = key;
-    this.landlordData.sort((a, b) => {
+    this.data.sort((a, b) => {
       return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
     });
   }

@@ -1,4 +1,22 @@
-section.nav-black {
-    background-color: #e3f2fd;
-   
+section.nav-black,
+footer {
+  background-color: #e3f2fd;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nav-padding {
+  padding-top: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 10px;
+  background-color: #e3f2fd;
 }

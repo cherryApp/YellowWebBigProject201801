@@ -22,7 +22,7 @@ export class DataImportService {
 
 
   constructor(
-    private db: AngularFireDatabase,
+    private db: AngularFireDatabase
   ) {
 
     this.officeRef = db.object('office');
@@ -83,8 +83,23 @@ export class DataImportService {
 
   }
 
+  /* not working! to be continued
 
+  addLandLord(key: string, record: any) {
+    this.db.list(key).push(record);
+  }
+  set addOffice(record: any) {
+    this.db.list('office').push(record);
+  }
+  set addAgent(record: any) {
+    this.db.list('agent').push(record);
+  }
+  set addEstate(record: any) {
+    this.db.list('agent').push(record);
+  }
+*/
   ngOnInit() {
   }
+
 
 }

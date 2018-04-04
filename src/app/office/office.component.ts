@@ -12,8 +12,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class OfficeComponent implements OnInit {
   loginData: { email: string, pass: string } = {
-    email: "",
-    pass: ""
+    email: '',
+    pass: ''
   };
   user: any;
   itemRef: AngularFireObject<any>;
@@ -21,19 +21,19 @@ export class OfficeComponent implements OnInit {
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
-    "city",
-    "officeID"
+    'city',
+    'officeID'
   ];
-  lastKey: string = "";
+  lastKey = '';
   sorts: any = {};
-  order: number = 1;
+  order = 1;
   currentData: any;
 
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase
   ) {
-    for (let k of this.keys) {
+    for (const k of this.keys) {
       this.sorts[k] = {};
     }
 
@@ -47,7 +47,8 @@ export class OfficeComponent implements OnInit {
         this.tableData = [];
 
         // Push new rows to the tableData with key and value.
-        for (var k in values) {
+        // tslint:disable-next-line:forin
+        for (const k in values) {
           this.tableData.push({
             key: k,
             data: values[k]
@@ -65,15 +66,16 @@ export class OfficeComponent implements OnInit {
   }
 
   sort(key): void {
-    for (var k in this.sorts) {
-      this.sorts[k] = "";
+    // tslint:disable-next-line:forin
+    for (const k in this.sorts) {
+      this.sorts[k] = '';
     }
-    if (this.lastKey == key) {
+    if (this.lastKey === key) {
       this.order *= -1;
     } else {
       this.order = 1;
     }
-    this.sorts[key] = this.order == -1 ? 'up' : 'down';
+    this.sorts[key] = this.order === -1 ? 'up' : 'down';
 
     this.lastKey = key;
     this.tableData.sort((a, b) => {
