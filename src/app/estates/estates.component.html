@@ -5,13 +5,13 @@
     <thead class="colored-thead">
       <tr>
         <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
-          {{ key }}
           <span *ngIf="sorts[key] == 'up'">
-            <i class="fas fa-angle-down"></i>
+            <i class="fas fa-sort-down"></i>
           </span>
           <span *ngIf="sorts[key] == 'down'">
-            <i class="fas fa-angle-up"></i>
+            <i class="fas fa-sort-up"></i>
           </span>
+          {{ key }}
         </th>
         <th></th>
       </tr>
@@ -98,13 +98,13 @@
             <tr *ngIf="actualRow.status=='sold'">
               <td>Gross income</td>
               <td>
-                {{actualRow.grossIncome}}Ft
+                {{actualRow.grossIncome}} Ft
               </td>
             </tr>
             <tr *ngIf="actualRow.status!='sold'">
               <td>Expected gross income</td>
               <td>
-                {{actualRow.grossIncome}}Ft
+                {{actualRow.grossIncome}} Ft
               </td>
             </tr>
           </tbody>

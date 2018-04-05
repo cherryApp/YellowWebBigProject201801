@@ -70,15 +70,15 @@ export class EstatesComponent implements OnInit {
   }
 
   sort(key): void {
-    for (var k in this.sorts) {
+    for (let k in this.sorts) {
       this.sorts[k] = "";
     }
-    if (this.lastKey == key) {
+    if (this.lastKey === key) {
       this.order *= -1;
     } else {
       this.order = 1;
     }
-    this.sorts[key] = this.order == -1 ? 'up' : 'down';
+    this.sorts[key] = this.order === -1 ? 'up' : 'down';
     console.log(typeof this.sorts[key]);
     this.lastKey = key;
     this.tableData.sort((a, b) => {
@@ -131,8 +131,13 @@ export class EstatesComponent implements OnInit {
     );
   }
 
+  /**
+   * A függvény megkap egy rekordot majd kivasalja egy actualRow propertybe az adatokat.
+   * Kiszámolja a bruttó jövedelmet a lakásár(price) és jutalékszázalék alapján.
+   * Kiszámolja a fajlagos árat az árból és területből
+   * @param row rekord
+   */
   modalData(row) {
-    //console.log(row.data.price);
     this.actualRow = row.data;
     this.actualRow.key = row.key;
     const margin = parseFloat(this.actualRow.margin);
