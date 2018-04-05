@@ -16,8 +16,10 @@ export class CarsComponent implements OnInit {
   item: Observable<any>;
   tableData: Array<any> = [];
   tableData2: Array<any> = [];
+  tripsToShow: Array<any> = [];
   newRow: any = {};
-
+  showDetails: boolean = false;
+  showPic: number = 5;
   keys: Array<string> = [
     "id",
     "type",
@@ -25,8 +27,15 @@ export class CarsComponent implements OnInit {
     "avgConsumption",
     "tank",
     "motorType",
-    "distanceTaken"
+    "dstncTaken"
   ];
+  tripDetailsInfo: Array<string> = [
+    "actConsumption",
+    "cost",
+    "date",
+    "distance"
+  ];
+
   lastKey: string = "";
   sorts: any = {};
   order: number = 1;
@@ -58,14 +67,14 @@ export class CarsComponent implements OnInit {
       values => {
         this.tableData2 = [];
         for (let k in values) {
-          console.log(values[k]);
+          //console.log(values[k]);
           this.tableData2.push({
             key: k,
             data: values[k]
 
           });
         }
-        console.log(this.tableData2, this.tripsRef);
+        //   console.log(this.tableData2, this.tripsRef);
 
       }
     )
@@ -109,9 +118,11 @@ export class CarsComponent implements OnInit {
     this.idCounter++;
   }
   datas(id) {
-
     let trips = this.tableData2.filter(item => item.data.carId == id ? true : false);
-    console.log(trips);
+    this.showDetails = true;
+    this.tripsToShow = trips;
+    this.showPic = id
+    //console.log(trips);
   }
 
 }

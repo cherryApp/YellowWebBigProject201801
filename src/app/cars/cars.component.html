@@ -1,54 +1,100 @@
 <br>
 <div class="container">
-  <table class="table table-striped text-center table-bordered">
-    <thead>
-      <th class="thElements" *ngFor="let key of keys" (click)="sort(key)">
-        {{ key }}
-      </th>
-      <th class="thElements">Methods</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <input [(ngModel)]="newRow.id" type="text" class="form-control">
-        </td>
-        <td>
-          <input [(ngModel)]="newRow.type" type="text" class="form-control">
-        </td>
-        <td>
-          <input [(ngModel)]="newRow.actfuel" type="text" class="form-control">
-        </td>
-        <td>
-          <input [(ngModel)]="newRow.avgConsumption" type="text" class="form-control">
-        </td>
-        <td>
-          <input [(ngModel)]="newRow.tank" type="text" class="form-control">
-        </td>
-        <td>
-          <input [(ngModel)]="newRow.motorType" type="radio" class="radio" name="motorType" value="benzin">Benzin
-          <br>
-          <input [(ngModel)]="newRow.motorType" type="radio" class="radio" name="motorType" value="diesel">Diesel
-        </td>
+  <div class="row">
+    <div class="col-12">
 
-        <td>
-          <div class="btn-group">
-            <button class="btn btn-success" (click)="dataAdd(newRow)">Add Car</button>
-          </div>
-        </td>
-        <tr *ngFor="let row of tableData">
-          <td *ngFor="let key of keys">
-            {{row.data[key]}}
-          </td>
+      <table class="table table-striped text-center table-bordered">
+        <thead>
+          <th class="thElements" *ngFor="let key of keys" (click)="sort(key)">
+            {{ key }}
+          </th>
+          <th class="thElements">Methods</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input [(ngModel)]="newRow.id" type="text" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="newRow.type" type="text" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="newRow.actfuel" type="text" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="newRow.avgConsumption" type="text" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="newRow.tank" type="text" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="newRow.motorType" type="radio" class="radio" name="motorType" value="benzin">Benzin
+              <br>
+              <input [(ngModel)]="newRow.motorType" type="radio" class="radio" name="motorType" value="diesel">Diesel
+            </td>
+            <td></td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-success" (click)="dataAdd(newRow)">Add Car</button>
+              </div>
+            </td>
+            <tr *ngFor="let row of tableData">
+              <td *ngFor="let key of keys">
+                {{row.data[key]}}
+              </td>
 
-          <td>
-            <div class="btn-group">
-              <button (click)="datas(row.data.id)" class="btn btn-success">Details</button>
-              <button (click)="dataDelete(row.key)" class="btn btn-danger">Delete</button>
-            </div>
-          </td>
+              <td>
+                <div class="btn-group">
+                  <button (click)="datas(row.data.id)" class="btn btn-info">Trips</button>
+                  <button (click)="dataDelete(row.key)" class="btn btn-danger">Delete</button>
+                  <button (click)="refillTank(row.key)" class="btn btn-warning">Refill</button>
+                </div>
+              </td>
 
-        </tr>
+            </tr>
 
-    </tbody>
-  </table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br>
+  <div *ngIf="showDetails==true" class="container">
+    <div class="row">
+      <div class="col-6">
+        <img *ngIf="showPic==0" class="cars" src="https://assets.mbusa.com/vcm/MB/DigitalAssets/Vehicles/Models/2018/C63CS/Features/2018-C-C63S-AMG-COUPE-019-MCFO.jpg"
+          alt="Mercedes">
+        <img *ngIf="showPic==1" class="cars" src="http://fcauthority.com/wp-content/uploads/2017/02/Giulia-Configurator-1-.jpg" alt="Alfa Romeo">
+        <img *ngIf="showPic==2" class="cars" src="http://txautonet.com/wp-content/uploads/parser/Ford-Focus-2.0-1992-1.jpg" alt="Ford">
+        <img *ngIf="showPic==3" class="cars" src="https://carsales.pxcrush.net/carsales/car/cil/cc5567135637799777703.jpg?width=600&height=300&overlay&aspect=FitWithIn&watermark=62643054"
+          alt="BMW">
+      </div>
+      <div class="col-6">
+        <h1 *ngIf="showPic==0">Mercedes</h1>
+        <h1 *ngIf="showPic==2">Ford</h1>
+        <h1 *ngIf="showPic==3">BMW</h1>
+        <h1 *ngIf="showPic==1">Alfa Romeo</h1>
+
+        <table class="table table-striped text-center table-bordered">
+          <thead>
+            <tr class="thElements">
+              <th *ngFor="let key of tripDetailsInfo">
+                {{ key }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of tripsToShow">
+              <td *ngFor="let key of tripDetailsInfo">
+                {{row.data[key]}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
 </div>
