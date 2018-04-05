@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'app-medicines',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./medicines.component.css']
 })
 export class MedicinesComponent implements OnInit {
-
+  albums: AngularFireList<any[]>;
   constructor() { }
 
   ngOnInit() {
   }
-
 }

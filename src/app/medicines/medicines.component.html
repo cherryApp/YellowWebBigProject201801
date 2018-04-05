@@ -5,3 +5,10 @@
     </p>
   </div>
 </div>
+<h2>Medicines</h2>
+
+<div *ngFor="let medicine of Medicines | async" class="panel panel-default">
+  <div class="panel-body">
+    <h3><em>{{medicine.effect}}</em>, {{medicine.name}}, {{medicine.side-effect}}</h3>
+  </div>
+</div>
