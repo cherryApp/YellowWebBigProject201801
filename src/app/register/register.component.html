@@ -1,0 +1,17 @@
+<div>&nbsp;</div>
+<table class="table table-bordered">
+  <thead class="bg-info">
+    <tr>
+      <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
+        {{ key }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableData">
+      <td *ngFor="let key of keys">
+        <input [(ngModel)]="row.data[key]" type="text" class="form-control">
+      </td>
+    </tr>
+  </tbody>
+</table>

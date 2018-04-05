@@ -14,13 +14,15 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { FuelingComponent } from './fueling/fueling.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: UsersComponent, pathMatch: 'full' },
   { component: UsersComponent, path: 'users' },
   { component: VehiclesComponent, path: 'vehicles' },
   { component: DriversComponent, path: 'drivers' },
-  { component: FuelingComponent, path: 'fueling' }
+  { component: FuelingComponent, path: 'fueling' },
+  { component: RegisterComponent, path: 'register' }
 ];
 
 @NgModule({
@@ -32,6 +34,8 @@ const routes: Routes = [
     DriversComponent,
     FuelingComponent,
     NavbarComponent
+    ,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

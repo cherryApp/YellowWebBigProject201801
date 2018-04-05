@@ -11,13 +11,15 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./fueling.component.css']
 })
 export class FuelingComponent implements OnInit {
+  drivers: any;
+  cars: any;
   fueling: any;
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
   tableData: Array<any> = [];
   newRow: any = {};
   keys: Array<string> = [
-    "Sofőr(ID)",
+    "driverId",
     "Rendszám",
     "Összeg(Ft)",
     "Üzemanyag(l)",
@@ -32,9 +34,23 @@ export class FuelingComponent implements OnInit {
 
   constructor(private db: AngularFireDatabase) {
 
-    for (let k of this.keys) {
-      this.sorts[k] = {};
+    /* for (let k of this.keys) {
+      this.db.object('drivers').valueChanges().subscribe(value => {
+        this.drivers = [];
+        for (let i in value) {
+          this.drivers.push({ key: i, data: value[i] });
+        }
+        console.log(this.drivers);
+      });
     }
+
+    this.db.object('hatshowsor-c5225/vehicles').valueChanges().subscribe(value => {
+      this.cars = [];
+      for (let i in value) {
+        this.cars.push({ key: i, adat: value[i] });
+      }
+      console.log(this.cars);
+    }); */
 
     this.itemRef = db.object('fueling');
 
