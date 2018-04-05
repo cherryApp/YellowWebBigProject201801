@@ -79,7 +79,6 @@ export class EstatesComponent implements OnInit {
       this.order = 1;
     }
     this.sorts[key] = this.order === -1 ? 'up' : 'down';
-    console.log(typeof this.sorts[key]);
     this.lastKey = key;
     this.tableData.sort((a, b) => {
       return a.data[key].toString().localeCompare(b.data[key].toString()) * this.order;
