@@ -2,7 +2,7 @@
 
 This is an exam project of **Team FirstRow**.
 
-Course: 18JAN Front-end developer
+Course: 18JAN Front-end developer  
 Team members: Szász Kinga, Mihály Tamás, Szarka Péter
 
 This project was generated with **Angular CLI version 1.7.3.**
@@ -31,5 +31,5 @@ to manage real-estates
 	
 ## Other features
 
-Route change is shocking crazy
+Route change is shocking crazy  
 Visual identity
