@@ -1,3 +1,7 @@
 .container {
   background-color: rgb(240, 240, 240);
 }
+
+table {
+  box-shadow: 0 0 10px grey;
+}
