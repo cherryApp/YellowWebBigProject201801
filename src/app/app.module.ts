@@ -11,13 +11,14 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { NursesComponent } from './nurses/nurses.component';
 import { PensionersComponent } from './pensioners/pensioners.component';
 import { MedicinesComponent } from './medicines/medicines.component';
 import { MedicinesService } from './medicines.service';
 import { PensionersService } from './pensioners.service';
 import { NursesService } from './nurses.service';
+import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 
 
 const routes: Routes = [
@@ -46,7 +47,9 @@ const routes: Routes = [
     PensionersService,
     NursesService,
     AngularFireAuth,
-    AngularFireDatabase
+    AngularFireDatabase,
+    AngularFirestore,
+    AngularFirestoreModule
   ],
   bootstrap: [AppComponent]
 })
