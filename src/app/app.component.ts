@@ -43,10 +43,10 @@ export class AppComponent implements OnInit {
     ).then(
       value => console.log(value),
       error => console.error(error)
-    );
+      );
   }
-  /*logout() {
-      this.afAuth.auth.signOut();
-    }*/
+  logout() {
+    this.afAuth.auth.signOut();
+  }
   title = 'app';
 }
