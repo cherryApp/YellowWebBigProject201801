@@ -38,7 +38,7 @@ export class NursesComponent implements OnInit {
     this.afo.valueChanges().subscribe(
       values => {
         this.tableData = [];
-
+        console.log(values);
         for (var k in values) {
           this.tableData.push({
             key: k,
