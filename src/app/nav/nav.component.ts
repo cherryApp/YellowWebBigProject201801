@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +15,7 @@ export class NavComponent implements OnInit {
     { label: 'Medicines', url: '/medicines' },
   ];
 
-  constructor() { }
+  constructor(private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
   }
@@ -24,5 +26,9 @@ export class NavComponent implements OnInit {
 
   disableClick(event: MouseEvent) {
     event.preventDefault();
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 }
