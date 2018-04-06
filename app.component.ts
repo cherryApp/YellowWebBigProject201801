@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { MedicinesService } from './medicines.service';
-import { PensionersService } from './pensioners.service';
-import { NursesService } from './nurses.service';
+import { MedicinesService } from './src/app/medicines.service';
+import { PensionersService } from './src/app/pensioners.service';
+import { NursesService } from './src/app/nurses.service';
 
 @Component({
   selector: 'app-root',
