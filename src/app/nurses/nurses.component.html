@@ -1,39 +1,43 @@
-<h1>Nurses</h1>
-<div class="row">
-  <table class="table table-light table-hover">
-    <thead>
-      <tr>
-        <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
-          <span [class.show]="sorts[key] == 'down'"></span>
-          <span [class.show]="sorts[key] == 'up'"></span>
-          {{ key }}
-        </th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td *ngFor="let key of keys">
-          <input type="text" [(ngModel)]="newRow[key]" class="form-control">
-        </td>
-        <td>
-          <div class="btn-group">
-            <button (click)="addData(newRow)" class="btn btn-success">New Nurse</button>
-          </div>
-        </td>
-      </tr>
-      <tr *ngFor="let row of tableData">
-        <td *ngFor="let key of keys">
-          <input type="text" [(ngModel)]="row.data[key]" class="form-control">
-        </td>
-        <td>
-          <div class="btn-group">
-            <button (click)="updateData(row)" class="btn btn-primary">Update</button>
-            <button (click)="deleteData(row.key)" class="btn btn-danger">Delete</button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <h1>Nurses</h1>
+  <div class="row">
+    <table class="table table-light table-hover">
+      <thead>
+        <tr>
+          <th class="sort-th" *ngFor="let key of keys" (click)="sort(key)">
+            <span [class.show]="sorts[key] == 'down'"></span>
+            <span [class.show]="sorts[key] == 'up'"></span>
+            {{ key }}
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td *ngFor="let key of keys">
+            <input type="text" [(ngModel)]="newRow[key]" class="form-control">
 
+          </td>
+
+          <td>
+            <div class="btn-group">
+              <button (click)="addData(newRow)" class="btn btn-success">New Nurse</button>
+            </div>
+          </td>
+        </tr>
+        <tr *ngFor="let row of tableData">
+          <td *ngFor="let key of keys">
+            <input type="text" [(ngModel)]="row.data[key]" class="form-control">
+          </td>
+          <td>
+            <div class="btn-group">
+              <button (click)="updateData(row)" class="btn btn-primary">Update</button>
+              <button (click)="deleteData(row.key)" class="btn btn-danger">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>
