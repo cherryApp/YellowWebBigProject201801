@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { summaryFileName } from '@angular/compiler/src/aot/util';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +12,10 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  cars: Array<any>;
-  gas: Array<any>;
-  drivers: Array<any>;
-  fueling: Array<any>;
+  cars: Array<any> = [];
+  gas: Array<any> = [];
+  drivers: Array<any> = [];
+  fueling: Array<any> = [];
   data: any = [];
   itemRef: AngularFireObject<any>;
   item: Observable<any>;
@@ -30,46 +31,46 @@ export class RegisterComponent implements OnInit {
   sorts: any = {};
   order: number = 1;
   currentData: any;
+  summary: Array<any> = [];
+  summaryObjects: Array<object> = [[], [], [], [], []];
+
+
 
 
   constructor(private db: AngularFireDatabase) {
+    this.db.object('drivers').valueChanges().subscribe(value => {
+      for (let i in value) {
+        this.drivers.push({ "SofőrID": value[i].ID });
+      }
+    });
+    this.db.object('vehicles').valueChanges().subscribe(value => {
+      for (let i in value) {
+        this.cars.push(value[i]["Rendszám"]);
+      }
+      this.summary.push(this.cars);
 
-    for (let k of this.keys) {
-      this.db.object('drivers').valueChanges().subscribe(value => {
-        this.drivers = [];
-        for (let i in value) {
-          this.drivers.push(value[i]["ID"]);
-        }
-        console.log(this.drivers);
-      });
-    }
-    for (let k of this.keys) {
-      this.db.object('vehicles').valueChanges().subscribe(value => {
-        this.cars = [];
+    });
+    this.db.object('fueling').valueChanges().subscribe(value => {
+      for (let i in value) {
+        this.fueling.push(value[i]["Összeg(Ft)"]);
+      }
+      this.summary.push(this.fueling);
 
-        for (let i in value) {
-          this.cars.push(value[i]["Rendszám"]);
-        }
-        console.log(this.cars);
-      });
-    }
-    for (let k of this.keys) {
-      this.db.object('fueling').valueChanges().subscribe(value => {
-        this.fueling = [];
-        for (let i in value) {
-          this.fueling.push(value[i]["Összeg(Ft)"]);
-        }
-        console.log(this.fueling);
-      });
-    }
-    for (let k of this.keys) {
-      this.db.object('fueling').valueChanges().subscribe(value => {
-        this.gas = [];
-        for (let i in value) {
-          this.gas.push(value[i]["Üzemanyag(l)"]);
-        }
-        console.log(this.gas);
-      });
+    });
+    this.db.object('fueling').valueChanges().subscribe(value => {
+      for (let i in value) {
+        this.gas.push(value[i]["Üzemanyag(l)"]);
+      }
+      this.summary.push(this.gas);
+      this.createObjects();
+    });
+  }
+
+  createObjects(): void {
+    for (let i in this.drivers) {
+      this.drivers[i].Rendszám = this.summary[0][i];
+      this.drivers[i]["Fogyasztás(l)"] = this.summary[1][i];
+      this.drivers[i]["Összeg(Ft)"] = this.summary[2][i];
     }
   }
 
