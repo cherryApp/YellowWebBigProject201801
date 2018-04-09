@@ -8,9 +8,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of tableData">
+    <tr *ngFor="let row of drivers">
       <td *ngFor="let key of keys">
-        <input [(ngModel)]="row.data[key]" type="text" class="form-control">
+        <input [(ngModel)]="row[key]" type="text" class="form-control">
       </td>
     </tr>
   </tbody>
