@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   keys: Array<string> = [
     "SofőrID",
     "Rendszám",
-    "Fogyasztás(l)",
+    "Üzemanyag fogyás (l)",
     "Összeg(Ft)"
   ];
   lastKey: string = "";
