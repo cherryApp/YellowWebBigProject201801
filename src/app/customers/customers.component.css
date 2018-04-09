@@ -33,3 +33,7 @@ td {
 .alli-yellow {
   border-color: rgba(249, 236, 31, 1);
 }
+
+input:focus {
+  box-shadow: 0 0 10px 3px greenyellow;
+}
